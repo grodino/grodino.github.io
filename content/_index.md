@@ -9,7 +9,7 @@ Hi ! My name is Augustin Godinot and I am currently a student at French universi
 This year, I am enrolled in the [M2 Advanced Wireless Communications](https://www.universite-paris-saclay.fr/formation/master/electronique-energie-electrique-automatique/m2-advanced-wireless-communications-systems) master degree.
 
 ***E-mail***: [augustin.godinot@ens-paris-saclay.fr](maito:augustin.godinot@ens-paris-saclay.fr) <br>
-***Curriculum Vitae***: [short](CV/short.pdf) (updated 11-2021), [long](CV/long.pdf) (updated 11-2020)
+***Curriculum Vitae***: [short](CV/short.pdf) (updated 07-2022), [long](CV/long.pdf) (updated 11-2020)
 
 ### Projects
 You can find a list of projects [here](/projects).
