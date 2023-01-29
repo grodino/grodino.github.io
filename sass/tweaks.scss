@@ -2,10 +2,16 @@ h3 {
   clear: left;
 }
 
-.profile-picture {
-  float: left;
+#description {
+  display: flex;
+}
+
+#description div {
   margin-right: 1rem;
-  margin-bottom: 1rem;
+}
+
+.profile-picture {
+  width: 40rem;
 }
 
 .sidebar-nav-item {
@@ -14,4 +20,16 @@ h3 {
 
 .news-item {
   margin-bottom: .1rem;
+}
+
+#emails {
+  display: flex;
+}
+
+#emails div {
+  margin-right: 2mm;
+}
+
+#emails div a {
+  display: block;
 }

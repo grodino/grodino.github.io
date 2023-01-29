@@ -1,5 +1,5 @@
 +++
-title =  "Exposure diversity in music recommender sytems"
+title = "Exposure diversity in music recommender systems"
 date = 2021-01-28
 description = "Study of exposure diversity through the lens of an Heterogeneous Networks diversity measure."
 +++
@@ -7,6 +7,10 @@ description = "Study of exposure diversity through the lens of an Heterogeneous 
 
 During this five month project with [Fabien Tarissan](https://www-complexnetworks.lip6.fr/~tarissan/), I studied the diversity of the recommendations made by music recommender systems.
 We built upon a [diversity measure in heterogeneous networks](https://arxiv.org/abs/2001.01296) and applied it to study the algorithm from [Collaborative Filtering For Implicit Datasets](https://ieeexplore.ieee.org/document/4781121).
+
+**UPDATE**: The extended version of our work was accepted in [Applied Network
+Science](https://appliednetsci.springeropen.com/)
+- Paper : [pdf](https://doi.org/10.1007/s41109-022-00530-7)
 
 **UPDATE**: I presented our work at the [CNA 2021](https://complexnetworks.org/) conference in Madrid. Here is the related material:
 - Extended abstract: [pdf](recodiv_CNA.pdf)

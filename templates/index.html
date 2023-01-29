@@ -1,7 +1,7 @@
 {% extends "hyde/templates/index.html" %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="{{ get_url(path="tweaks.css", trailing_slash=false) }}">
+<link rel="stylesheet" href="{{ get_url(path='tweaks.css', trailing_slash=false) }}">
 {% endblock extra_head %}
 
 {% block sidebar_nav %}
@@ -14,8 +14,8 @@
 
 {# Display the subsection links #}
 {% for s in index.subsections %}
-    {% set subsection = get_section(path=s) %}
-    <li class="sidebar-nav-item"><a href="{{subsection.permalink}}">{{ subsection.title }}</a></li>
+{% set subsection = get_section(path=s) %}
+<li class="sidebar-nav-item"><a href="{{subsection.permalink}}">{{ subsection.title }}</a></li>
 {% endfor %}
 
 {# Display the custom links #}
@@ -30,11 +30,11 @@
 
 {% set news = get_section(path="news/_index.md") %}
 {% for page in news.pages %}
-    <div>
-        <h5 class="news-item">[{{ page.year }}-{{ page.month }}] {{ page.title }}</h5>
-        {{ page.content | safe }}
-    </div>
-    
+<div>
+    <h5 class="news-item">[{{ page.date | date(format="%Y-%m")}}] {{ page.title }}</h5>
+    {{ page.content | safe }}
+</div>
+
 {% endfor %}
 
 {% endblock content %}
