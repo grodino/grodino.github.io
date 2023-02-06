@@ -44,9 +44,9 @@ algorithms to achieve these limits.
 You can find a list of projects [here](/projects).
 
 ### Research interests
-* Applied mathematics / Signal Processing
-* Networks and their applications
-* Embedded systems programming
+* Algorithmic auditing of remote algorithms
+* ML theory and auditing theory
+* Distribution testing
 
 ### Personal
 When I am not working, I like to travel France and Europe by bike (it’s called biketouring !).
