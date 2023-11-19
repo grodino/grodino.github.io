@@ -41,7 +41,12 @@ algorithms to achieve these limits.
 
 
 ### Projects
-You can find a list of projects [here](/projects).
+Here is a list of projects I am currently interested in, I am open/looking for collaborations, do not hesitate to contact me !
+* Under manipulations, are there models harder to audit? [link](/projects/manipulated-audits)
+* Metrics between models in output space: a benchmark.
+* Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group).
+
+You can find a list of older projects [here](/projects).
 
 ### Research interests
 * Algorithmic auditing of remote algorithms
