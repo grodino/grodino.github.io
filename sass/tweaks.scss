@@ -1,35 +1,41 @@
 h3 {
-  clear: left;
+    clear: left;
 }
 
 #description {
-  display: flex;
+    display: flex;
 }
 
 #description div {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 .profile-picture {
-  width: 40rem;
+    width: 35rem;
+}
+
+@media (max-width: 576px) {
+    .profile-picture {
+        display: none;
+    }
 }
 
 .sidebar-nav-item {
-  font-size: larger;
+    font-size: larger;
 }
 
 .news-item {
-  margin-bottom: .1rem;
+    margin-bottom: .1rem;
 }
 
 #emails {
-  display: flex;
+    display: flex;
 }
 
 #emails div {
-  margin-right: 2mm;
+    margin-right: 2mm;
 }
 
 #emails div a {
-  display: block;
+    display: block;
 }
