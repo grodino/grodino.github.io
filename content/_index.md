@@ -40,22 +40,22 @@ algorithms to achieve these limits.
 
 
 
-### Projects
+### 🎯 Projects
 Here is a list of projects I am currently interested in, I am open/looking for collaborations, do not hesitate to contact me !
 * Under manipulations, are there models harder to audit? [link](/projects/manipulated-audits)
 * Metrics between models in output space: a benchmark.
 * Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group).
 
-You can find a list of older projects [here](/projects).
+You can find a list of older projects [here](/projects) and a list of publications [here](https://scholar.google.com/citations?user=LKAxA34AAAAJ&hl=fr).
 
-### Research interests
+### 🔬 Research interests
 * Algorithmic auditing of remote algorithms
 * ML theory and auditing theory
 * Distribution testing
 
-### Personal
+### 🚵 Personal
 When I am not working, I like to travel France and Europe by bike (it’s called biketouring !).
 I took the picture on the left in Grenoble during the 2020 winter.
 
 
-### News
+### 📣 News

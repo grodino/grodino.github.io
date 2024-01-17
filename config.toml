@@ -23,5 +23,6 @@ compile_sass = true
 [extra]
 hyde_links = [
     {url = "https://github.com/grodino", name = "💻 Github"},
+    {url = "https://scholar.google.com/citations?user=LKAxA34AAAAJ", name = "📚 Scholar"},
     {url = "https://www.linkedin.com/in/augustingodinot/", name = "📄 Linkedin"},
 ]
