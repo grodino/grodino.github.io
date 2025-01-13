@@ -11,8 +11,8 @@ template = "index.html"
 <div>
 
 Hi ! My name is Augustin Godinot and I am currently a PhD student in the
-[WIDE](https://team.inria.fr/wide/) team in the
-[IRISA](https://www.iriqsa.fr/)/[INRIA](https://www.inria.fr) lab. I work on *Auditing the mutations
+[ARTISHAU](https://team.inria.fr/artishau/) team in the
+[IRISA](https://www.irisa.fr/)/[INRIA](https://www.inria.fr) lab. I work on *Auditing the mutations
 of online AI models*, trying to understand the fundamental limits to back-box auditing and designing
 algorithms to achieve these limits.
 
@@ -22,23 +22,26 @@ algorithms to achieve these limits.
 <strong><em>E-mail</em></strong> : augustin.godinot
 </div>
 <div>
-<a href="maito:augustin.godinot@irisa.fr">@irisa.fr</a>
-<a herf="maito:augustin.godinot@inria.fr)">@inria.fr</a>
+<a href="mailto:augustin.godinot@inria.fr">@inria.fr</a>
+<a href="mailto:augustin.godinot@irisa.fr">@irisa.fr</a>
 </div>
 <div>
-<a herf="maito:augustin.godinot@univ-rennes.fr">@univ-rennes.fr</a>
-<a herf="maito:augustin.godinot@ens-paris-saclay">@ens-paris-saclay.fr</a>
+<a href="mailto:augustin.godinot@univ-rennes.fr">@univ-rennes.fr</a>
+<a href="mailto:augustin.godinot@ens-paris-saclay">@ens-paris-saclay.fr</a>
 </div>
 </div>
 <div>
 
-***Curriculum Vitae***: [short](CV/short.pdf) (updated 07-2022), [long](CV/long.pdf) (updated 09-2022)
+***Curriculum Vitae***: [short](CV/short.pdf) (updated 07-2022), [long](CV/long.pdf) (updated 12-2024)
 </div>
 </div>
 </div>
 </div>
 
-
+### 🔬 Research interests
+* Algorithmic auditing of remote ML models
+* ML theory and auditing theory
+* Property testing / Distribution testing
 
 ### 🎯 Projects
 Here is a list of projects I am currently interested in, I am open/looking for collaborations, do not hesitate to contact me !
@@ -47,11 +50,6 @@ Here is a list of projects I am currently interested in, I am open/looking for c
 * Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group).
 
 You can find a list of older projects [here](/projects) and a list of publications [here](https://scholar.google.com/citations?user=LKAxA34AAAAJ&hl=fr).
-
-### 🔬 Research interests
-* Algorithmic auditing of remote algorithms
-* ML theory and auditing theory
-* Distribution testing
 
 ### 🚵 Personal
 When I am not working, I like to travel France and Europe by bike (it’s called biketouring !).
