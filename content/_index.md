@@ -38,6 +38,9 @@ algorithms to achieve these limits.
 </div>
 </div>
 
+From March to the end of August 2025, I will be at Vector Institute in Toronto. I will work on user audits with [Mohammad Yaghini](https://m-yaghini.github.io/) and [Nicolas Papernot](https://www.papernot.fr/).
+
+
 ### 🔬 Research interests
 * Algorithmic auditing of remote ML models
 * ML theory and auditing theory
@@ -46,13 +49,13 @@ algorithms to achieve these limits.
 ### 🎯 Projects
 Here is a list of projects I am currently interested in, I am open/looking for collaborations, do not hesitate to contact me !
 * Under manipulations, are there models harder to audit? [link](/projects/manipulated-audits)
-* Metrics between models in output space: a benchmark.
-* Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group).
+* Metrics between models in output space: a benchmark. [link](/projects/qurd)
+* Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group)
 
 You can find a list of older projects [here](/projects) and a list of publications [here](https://scholar.google.com/citations?user=LKAxA34AAAAJ&hl=fr).
 
 ### 🚵 Personal
-When I am not working, I like to travel France and Europe by bike (it’s called biketouring !).
+When I am not working, I like to travel 🇫🇷 and 🇪🇺 by bike (it’s called biketouring !).
 I took the picture on the left in Grenoble during the 2020 winter.
 
 
