@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <!-- viewport-fit=cover is to support iPhone X rounded corners and notch in landscape-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+
+      <title>Augustin Godinot</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https://grodino.github.io/print.css" media="print">
+      <link rel="stylesheet" href="https://grodino.github.io/poole.css">
+      <link rel="stylesheet" href="https://grodino.github.io/hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+
+      
+<link rel="stylesheet" href="https://grodino.github.io/tweaks.css">
+
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container sidebar-sticky">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2F;&#x2F;grodino.github.io"><h1>Augustin Godinot</h1></a>
+                            
+                            <p class="lead">🚵 PhD student @ INRIA 
+ 👨‍🎓 prev. ENS Paris-Saclay</p>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+
+
+
+
+
+<li class="sidebar-nav-item"><a href="/">🏠 Home</a></li>
+
+
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;grodino.github.io&#x2F;news&#x2F;"></a></li>
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;grodino.github.io&#x2F;projects&#x2F;">🔬 Projects</a></li>
+
+
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;github.com&#x2F;grodino">💻 Github</a></li>
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;scholar.google.com&#x2F;citations?user=LKAxA34AAAAJ">📚 Scholar</a></li>
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;grodino.bsky.social">🦋 Bluesky</a></li>
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;augustingodinot&#x2F;">📄 Linkedin</a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<div class="post">
+  <h1 class="post-title">Real-time artificial horizon</h1>
+  <span class="post-date">2020-05-02</span>
+  <p>For a school project I implemented a crude artificial horizon on a STM32F746-DISCO board. This was the occasion to learn embedded-rust. The code of the Hardware Abstraction Layer (HAL) I contributed to can be found <a href="https://github.com/stm32-rs">here</a>. The code of my crude artificial horizon can be found <a href="https://grodino.github.io/projects/stm32-hal/artificial-horizon.zip">here</a>.</p>
+<figure style="width: 10em" class="align-center">
+    <img src="artificial-horizon.jpg" alt="Digital artificial horizon" class="center">
+    <figcaption>A digital artificial horizon</figcaption>
+</figure>
+<p>First, because I needed I2C to communicate with an Inertial Measurement Unit (IMU), I had to implement the protocol for the specific STM32F7 microcontroller family. I took some inspiration from existing I2C implementation for the F4 family and ported it to my microcontroller family. This resulted in a contribution to <a href="https://github.com/stm32-rs/stm32f7xx-hal/pull/43">stm32f7-hal</a>.</p>
+<p>Then, because I needed to use the display of the STM32F746-DISCO board, I implemented a driver for the LTDC (LCD-TFT Display Controller Interface) peripheral of the STM32F7xx microcontrollers. This was more difficult since no implementation existed in existing HALs. Diving in the details of the LTDC, I also worked on DMA transfers. This also resulted in contributions to stm32f7-hal: <a href="https://github.com/stm32-rs/stm32f7xx-hal/pull/40">1</a> and <a href="https://github.com/stm32-rs/stm32f7xx-hal/pull/41">2</a>.</p>
+<p>This project was a great opportunity to discover the embedded-rust ecosystem and community. Being part of the course <em>C programming for embebedded systems</em>, I also made a small introduction of <a href="https://rust-lang.org">rust-lang</a> to my teachers who wanted to know more about &quot;the replacement of C&quot;.</p>
+
+</div>
+
+        </div>
+
+    </body>
+
+</html>
