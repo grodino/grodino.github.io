@@ -39,7 +39,7 @@ algorithms to achieve these limits.
 </div>
 
 From March to the end of August 2025, I will be at Vector Institute in Toronto. I will work on user audits with [Mohammad Yaghini](https://m-yaghini.github.io/) and [Nicolas Papernot](https://www.papernot.fr/).
-
+I am looking for **Post-Doc opportunities, starting Spring 2026**.
 
 ### 🔬 Research interests
 * Algorithmic auditing of remote ML models
