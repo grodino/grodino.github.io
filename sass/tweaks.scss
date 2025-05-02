@@ -39,3 +39,40 @@ h3 {
 #emails div a {
     display: block;
 }
+
+.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Author list on paper page
+.paper-authors {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    // align-items: center;
+}
+
+.paper-authors .author {
+    margin: 10pt;
+}
+
+// Links to paper, code... on paper page
+.links-icon {
+    padding: 5pt 10pt;
+    margin: 10pt;
+    background-color: black;
+    border-radius: 20pt;
+    color: white;
+    font-weight: bold;
+}
+
+.links-icon {
+    display: inline-block;
+}
+
+.links-icon svg {
+    vertical-align: bottom;
+    height: 20pt;
+}

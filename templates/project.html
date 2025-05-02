@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
+    {% if page.extra.paper_authors %}
+    <div class="paper-authors">
+        {% for author in page.extra.paper_authors %}
+        <div class="author">
+            <a href="{{author | get(key='url', default='') }}">{{ author.name }}</a>
+            <br>
+            {{ author| get(key='affiliation', default='') }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ page.content | safe }}
+</div>
+{% endblock content %}
