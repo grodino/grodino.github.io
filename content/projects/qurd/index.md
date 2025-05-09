@@ -30,7 +30,7 @@ compliant, albeit less powerful model during the audit but swap it for an other 
 the users. A way to mitigate the ModelSwap™ attack is to monitor the user-facing model and check if
 it is the same that we saw during the audit. 
 
-[<img src="qurd_logo.svg" width="200" />](https://github.com/grodino/QuRD)
+[<img src="qurd_logo.svg" class="align-center" width="200" />](https://github.com/grodino/QuRD)
 
 Beyond auditing, comparing models is a fundamental task in ML. Perfomance evaluation, performance
 prediction, model provenance, model ownership resolution, unlearning verification are all based on
