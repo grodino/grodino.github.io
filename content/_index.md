@@ -48,9 +48,9 @@ I am looking for **Post-Doc opportunities, starting Spring 2026**.
 
 ### 🎯 Projects
 Here is a list of projects I am currently interested in, I am open/looking for collaborations, do not hesitate to contact me !
-* Under manipulations, are there models harder to audit? [link](/projects/manipulated-audits)
-* Metrics between models in output space: a benchmark. [link](/projects/qurd)
-* Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group)
+* Manipulating (and defending) ML audits: [framework](@/projects/audit-with-prior/index.md), [limits with large models](@/projects/manipulated_audits/index.md).
+* Distances between models in output space. [QuRD](@/projects/qurd/index.md).
+* Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group).
 
 You can find a list of older projects [here](/projects) and a list of publications [here](https://scholar.google.com/citations?user=LKAxA34AAAAJ&hl=fr).
 
