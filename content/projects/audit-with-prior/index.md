@@ -7,7 +7,7 @@ description = "How can auditors use prior knowledge to improve the robustness of
 paper_authors=[
     {name="Jade Garcia Bourrée*", affiliation="Inria, Université de Rennes"},
     {name="Augustin Godinot*", url="https://grodino.github.io",affiliation="Université de Rennes, Inria, IRISA/CNRS, PEReN"},
-    {name="Martijn De Vos", url="https://devos50.github.io/", affiliation="EPFL"},
+    {name="Martijn de Vos", url="https://devos50.github.io/", affiliation="EPFL"},
     {name="Milos Vujasinovic", url="https://mvujas.com/", affiliation="EPFL"},
     {name="Sayan Biswas", url="https://blitzwas.github.io/", affiliation="EPFL"},
     {name="Gilles Tredan", url="https://homepages.laas.fr/gtredan/", affiliation="LAAS, CNRS"},
@@ -20,6 +20,7 @@ paper_authors=[
 
 {{ paper(url="https://openreview.net/forum?id=AiaVCVDuxF", conference="ICML25")}}
 {{ arxiv(url="https://arxiv.org/abs/2505.04796")}}
+{{ poster(url="poster.pdf" )}}
 {{ code(url="https://github.com/grodino/merlin" )}}
 
 </center>
