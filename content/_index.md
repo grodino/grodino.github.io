@@ -17,28 +17,24 @@ of online AI models*, trying to understand the fundamental limits to back-box au
 algorithms to achieve these limits.
 
 <div>
-<div id="emails">
-<div>
-<strong><em>E-mail</em></strong> : augustin.godinot
-</div>
-<div>
-<a href="mailto:augustin.godinot@inria.fr">@inria.fr</a>
-<a href="mailto:augustin.godinot@irisa.fr">@irisa.fr</a>
-</div>
-<div>
-<a href="mailto:augustin.godinot@univ-rennes.fr">@univ-rennes.fr</a>
-<a href="mailto:augustin.godinot@ens-paris-saclay">@ens-paris-saclay.fr</a>
-</div>
-</div>
+    <div id="emails">
+        <div>
+            <strong><em>E-mail</em></strong> : augustin.godinot
+        </div>
+        <div>
+            <a href="mailto:augustin.godinot@inria.fr">@inria.fr</a>
+            <a href="mailto:augustin.godinot@ens-paris-saclay.fr">@ens-paris-saclay.fr</a>
+        </div>
+    </div>
 <div>
 
-***Curriculum Vitae***: [short](CV/short.pdf) (updated 07-2022), [long](CV/long.pdf) (updated 12-2024)
+***Curriculum Vitae***: [short](CV/short.pdf) (updated 07-2022), [long](CV/long.pdf) (updated 12-2025)
 </div>
 </div>
 </div>
 </div>
 
-From March to the end of August 2025, I will be at Vector Institute in Toronto. I will work on user audits with [Mohammad Yaghini](https://m-yaghini.github.io/) and [Nicolas Papernot](https://www.papernot.fr/).
+From March to the end of August 2025, I was at Vector Institute in Toronto. I work on user audits with [Mohammad Yaghini](https://m-yaghini.github.io/) and [Nicolas Papernot](https://www.papernot.fr/).
 I am looking for **Post-Doc opportunities, starting Spring 2026**.
 
 ### 🔬 Research interests
@@ -53,6 +49,13 @@ Here is a list of projects I am currently interested in, I am open/looking for c
 * Auditia reading group. [link](https://gitlab.inria.fr/WIDE/auditia/reading-group).
 
 You can find a list of older projects [here](/projects) and a list of publications [here](https://scholar.google.com/citations?user=LKAxA34AAAAJ&hl=fr).
+
+### 🧑‍🏫 Teaching
+
+- 2023 - 2026, *Convex, Proximal Optimization*, MsC. [labs](/teaching/2023-2026-istic/TP_optimisation1.pdf) I [created](/teaching/2023-2026-istic/TP_optimisation2.pdf).
+- 2024 - 2025, *Trustworthy Machine Learning* (Differential Privacy, explanations), MsC.
+- 2023 - 2025, *Tools for statisticians* (git, python, LaTeX), BsC.
+
 
 ### 🚵 Personal
 When I am not working, I like to travel 🇫🇷 and 🇪🇺 by bike (it’s called biketouring !).
