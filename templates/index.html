@@ -28,13 +28,17 @@
 {% block content %}
 {{ section.content | safe }}
 
+<!-- Only display the news on the homepage -->
+{% if section.path == "/" %}
 {% set news = get_section(path="news/_index.md") %}
+<h3>📣 News</h3>
+
 {% for page in news.pages %}
 <div>
     <h5 class="news-item">[{{ page.date | date(format="%Y-%m")}}] {{ page.title }}</h5>
     {{ page.content | safe }}
 </div>
-
 {% endfor %}
+{% endif %}
 
 {% endblock content %}

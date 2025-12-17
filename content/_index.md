@@ -16,6 +16,9 @@ Hi ! My name is Augustin Godinot and I am currently a PhD student in the
 of online AI models*, trying to understand the fundamental limits to back-box auditing and designing
 algorithms to achieve these limits.
 
+From March to the end of August 2025, I was at Vector Institute in Toronto to on user audits with [Mohammad Yaghini](https://m-yaghini.github.io/) and [Nicolas Papernot](https://www.papernot.fr/), preprint coming!
+I am looking for **Post-Doc opportunities, starting Spring 2026**.
+
 <div>
     <div id="emails">
         <div>
@@ -33,9 +36,6 @@ algorithms to achieve these limits.
 </div>
 </div>
 </div>
-
-From March to the end of August 2025, I was at Vector Institute in Toronto. I work on user audits with [Mohammad Yaghini](https://m-yaghini.github.io/) and [Nicolas Papernot](https://www.papernot.fr/).
-I am looking for **Post-Doc opportunities, starting Spring 2026**.
 
 ### 🔬 Research interests
 * Algorithmic auditing of remote ML models
@@ -61,5 +61,3 @@ You can find a list of older projects [here](/projects) and a list of publicatio
 When I am not working, I like to travel 🇫🇷 and 🇪🇺 by bike (it’s called biketouring !).
 I took the picture on the left in Grenoble during the 2020 winter.
 
-
-### 📣 News
