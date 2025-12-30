@@ -6,7 +6,7 @@ template = "index.html"
 <h2>Tools for machine learning audits in the presence of deceptive model providers</h2>
 <br>
 <div id="description">
-<div><img src="defense/manuscript-cover.svg" width="500" class="align-center"></div>
+<div><img src="/defense/manuscript-cover.svg" width="500" class="align-center"></div>
 <div>
 
 ### PhD defense 
