@@ -12,6 +12,8 @@ template = "index.html"
 ### PhD defense 
 Tuesday, <strong>February 10<sup>th</sup> 2026 at 14:30</strong>, I will be defending my thesis in Salle Aurigny at <a href="https://www.inria.fr/en/how-reach-inria-centre-rennes-university">INRIA Centre de l'Université de Rennes</a>.
 
+<a href="/defense/Augustin Godinot's PhD defense.ics">Add to calendar (.ics)</a>
+
 ### Meeting link
 I will post the meeting link shortly before the defense.
 
