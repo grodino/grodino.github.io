@@ -1,7 +1,12 @@
 +++
 title = ""
 template = "index.html"
+
+[extra]
+ogtitle = "Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers"
+ogimage = "manuscript-cover.png"
 +++
+
 <h1>Thinking Out of the (Black)-Box</h1>
 <h2>Tools for machine learning audits in the presence of deceptive model providers</h2>
 <br>
