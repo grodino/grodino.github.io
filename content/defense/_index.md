@@ -23,7 +23,7 @@ Tuesday, <strong>February 10<sup>th</sup> 2026 at 14:30</strong>, I will be defe
 I will post the meeting link shortly before the defense.
 
 ### Manuscript
-I will post the manuscript link in January.
+Reviewed <a href="/defense/manuscript-Augustin_Godinot-DRAFT.pdf">draft</a> before the defense.
 </div>
 </div>
 
