@@ -19,11 +19,10 @@ Tuesday, <strong>February 10<sup>th</sup> 2026 at 14:30</strong>, I will be defe
 
 <a href="/defense/Augustin Godinot's PhD defense.ics">Add to calendar (.ics)</a>
 
-### Meeting link
-<a href="https://rendez-vous.renater.fr/muted_private/Augustin_Godinot_PhD_Defense__bljutetel2z-_8cb89e-a6b1a0-8b0dde#config.startWithVideoMuted=true&config.startWithAudioMuted=true">Here</a> is the meeting link.
 
-### Manuscript
-Reviewed <a href="/defense/manuscript-Augustin_Godinot-DRAFT.pdf">draft</a> before the defense.
+### Manuscript/slides
+Reviewed <a href="/defense/manuscript-Augustin_Godinot-DRAFT.pdf">draft</a> before the defense. Final version to come. <br/>
+<a href="/defense/Defense Slides.pdf">Defense slides</a>.
 </div>
 </div>
 
