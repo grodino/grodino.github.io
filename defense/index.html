@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <!-- viewport-fit=cover is to support iPhone X rounded corners and notch in landscape-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+
+      <title>Augustin Godinot</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="https://godinot.xyz/print.css" media="print">
+      <link rel="stylesheet" href="https://godinot.xyz/poole.css">
+      <link rel="stylesheet" href="https://godinot.xyz/hyde.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+      
+
+      
+
+<meta name="google-site-verification" content="FCYCs6X_vcMmGBuVvkc6BGjoHAiidBxxuqgHZVDa_Os" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://godinot.xyztrue" />
+
+
+<meta property="og:title" content="Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers" />
+
+
+<meta property="og:image" content="https://godinot.xyz/defense/manuscript-cover.png" />
+
+
+<link rel="stylesheet" href="https://godinot.xyz/tweaks.css">
+
+
+    </head>
+
+    <body class=" ">
+        
+            <div class="sidebar">
+                <div class="container sidebar-sticky">
+                    <div class="sidebar-about">
+                        
+                            <a href="https:&#x2F;&#x2F;godinot.xyz"><h1>Augustin Godinot</h1></a>
+                            
+                            <p class="lead">🚵 PhD student @ INRIA 
+ 👨‍🎓 prev. ENS Paris-Saclay</p>
+                            
+                        
+                    </div>
+
+                    <ul class="sidebar-nav">
+                        
+
+
+
+
+
+<li class="sidebar-nav-item"><a href="/">🏠 Home</a></li>
+
+
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;godinot.xyz&#x2F;projects&#x2F;">🔬 Projects</a></li>
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;godinot.xyz&#x2F;teaching&#x2F;">🧑‍🏫 Teaching</a></li>
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;godinot.xyz&#x2F;defense&#x2F;"></a></li>
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;godinot.xyz&#x2F;news&#x2F;"></a></li>
+
+
+
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;github.com&#x2F;grodino">💻 Github</a></li>
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;scholar.google.com&#x2F;citations?user=LKAxA34AAAAJ">📚 Scholar</a></li>
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;grodino.bsky.social">🦋 Bluesky</a></li>
+
+<li class="sidebar-nav-item"><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;augustingodinot&#x2F;">📄 Linkedin</a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div class="content container">
+            
+<h1>Thinking Out of the (Black)-Box</h1>
+<h2>Tools for machine learning audits in the presence of deceptive model providers</h2>
+<br>
+<div id="description">
+<div><img src="/defense/manuscript-cover.svg" width="500" class="align-center"></div>
+<div>
+<h3 id="phd-defense">PhD defense</h3>
+<p>Tuesday, <strong>February 10<sup>th</sup> 2026 at 14:30</strong>, I will be defending my thesis in Salle Aurigny at <a href="https://www.inria.fr/en/how-reach-inria-centre-rennes-university">INRIA Centre de l'Université de Rennes</a>.</p>
+<p><a href="/defense/Augustin Godinot's PhD defense.ics">Add to calendar (.ics)</a></p>
+<h3 id="manuscript-slides">Manuscript/slides</h3>
+<p>Reviewed <a href="/defense/manuscript-Augustin_Godinot-DRAFT.pdf">draft</a> before the defense. Final version to come. <br/>
+<a href="/defense/Defense Slides.pdf">Defense slides</a>.</p>
+</div>
+</div>
+<h2 id="abstract">Abstract</h2>
+<p class="text-justify">
+Machine learning-based prediction services are now widely deployed across industries by companies, governments, and individuals.
+Yet, these services often rely on a complex AI supply chain, whose components (training data, models, infrastructure), while critical to their performance, are partially or completely hidden to the final users.
+Thus, to an external user or regulator, these prediction services appear as black-boxes, complicating their evaluation and opening avenues for manipulations.
+In the presence of deceptive model providers, this thesis aims to understand the fundamental limits to black-box auditing and designing protocols to provide guarantees beyond the black-box interaction model.
+This manuscript presents three contributions towards that goal.
+First, I present a formalization of this quest for the minimal assumption beyond the black-box as a prior construction problem and provide a new audit method leveraging the labeled data available to the auditor.
+Then, I study the benefits of requesting the hypothesis class used by the platform to inform the audit.
+Finally, in an attempt to cheaply detect post-audit attacks, I introduce a new model fingerprint baseline and theoretical analysis to detect model change.
+</p>
+<h2 id="jury">Jury</h2>
+<ul>
+<li>Mme. <a href="https://people.rennes.inria.fr/Aline.Roumy/">Aline ROUMY</a>, <em>Directrice de Recherche @ INRIA</em> <span style="float:right" align="right">Présidente</span></li>
+<li>M. <a href="https://sites.google.com/view/damien-garreau/home">Damien GAREAU</a>, <em>Professor @ University of Würzburg</em> <span style="float:right" align="right">Rapporteur</span></li>
+<li>M. <a href="https://researchers.lille.inria.fr/abellet/">Aurélien BELLET</a>, <em>Directeur de Recherche @ INRIA</em> <span style="float:right" align="right">Rapporteur</span></li>
+<li>M. <a href="https://www.papernot.fr/">Nicolas PAPERNOT</a>, <em>Assistant Professor @ University of Toronto</em> <span style="float:right" align="right">Examinateur</span></li>
+<li>M. <a href="https://homepages.laas.fr/gtredan/">Gilles TRÉDAN</a>, <em>Directeur de Recherche @ LAAS-CNRS</em> <span style="float:right" align="right">Directeur de thèse</span></li>
+<li>M. <a href="https://erwanlemerrer.github.io/">Erwan LE MERRER</a>, <em>Chercheur @ INRIA</em> <span style="float:right" align="right">Directeur de thèse</span></li>
+<li>M. <a href="https://team.inria.fr/wide/team/francois-taiani/">François TAÏANI</a>, <em>Professeur des Universités @ Université de Rennes</em> <span style="float:right" align="right">Directeur de thèse</span></li>
+<li>Mme. <a href="https://www.peren.gouv.fr/en/recherche-equipe/gohar-dashyan/">Gohar DASHYAN</a>, <em>Lead Recherche et Éthique @ PEReN</em> <span style="float:right" align="right">Encadrante</span></li>
+</ul>
+
+
+<!-- Only display the news on the homepage -->
+
+
+
+        </div>
+
+    </body>
+
+</html>
