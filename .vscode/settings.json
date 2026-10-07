@@ -1,0 +1,7 @@
+{
+    // tinymist
+    "tinymist.typstExtraArgs": [
+        "--package-path",
+        ".baudelaire/generated/packages"
+    ]
+}

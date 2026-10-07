@@ -1,0 +1,82 @@
+// This site takes its templates, its assets and its config defaults from a
+// theme, so what is left here is what a theme cannot decide for you: who the
+// site is, where its files live, and how you preview it.
+//
+// Everything the theme states is a floor. State a key yourself and yours wins,
+// nested blocks included. Lists are the exception: declaring
+// `content { collections { .. } }` of your own replaces the theme's whole set
+// rather than adding to it, so copy the theme's block first if you only meant
+// to add a collection.
+
+site "Augustin Godinot"
+description "Postdoctoral researcher, MPI-SWS"
+url "https://godino.xyz"
+author "Augustin Godinot"
+lang "en"
+
+paths {
+  content "content"
+  dist "public"
+  assets "assets"
+  templates "templates"
+}
+
+
+// Anything you put in `templates/` or `assets/` shadows the theme's file of the
+// same name, one file at a time. Nothing else has to move.
+
+serve {
+  port 1821
+  bind "127.0.0.1"
+  open #true
+  watch #true
+}
+
+profiles {
+  dev {
+    url "http://localhost:1821"
+    content {
+      // Drafts (`post.draft.typ`, or `draft: true` in the frontmatter) and
+      // pages dated ahead of now build here and nowhere else.
+      drafts #true
+      future #true
+    }
+  }
+  prod {
+    html {
+      pretty #false
+    }
+  }
+}
+
+typst { fonts { system #false }}
+
+// Templates, assets and config defaults come from this package.
+theme "themes/academic"
+
+// The theme's collections, with its `projects` renamed `research`: the
+// directory, the URLs and the nav label all follow the collection's path.
+content {
+  collections {
+    _root { template "page.typ" }
+
+    research "research/**/*.typ" {
+      sort "date"
+      reverse #true
+      template "project.typ"
+      paginate {
+        template "list.typ"
+        size 12
+      }
+    }
+  }
+}
+
+// Baudelaire only writes the content files a page shows (its images), yet
+// `page.assets` already names a URL for every file beside a page, under
+// `/assets/` mirroring `content/`, and the project template points links at
+// it. Publish the rest there: the PDFs, archives and calendar files linked from
+// the pages, and the CVs (`content/CV/short.pdf` -> `/assets/CV/short.pdf`).
+hooks {
+  after "cd content && find . -type f ! -name '*.typ' ! -name '*.md' -exec cp -n --parents -t ../public/assets {} +"
+}
