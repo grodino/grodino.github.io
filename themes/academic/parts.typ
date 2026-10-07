@@ -193,8 +193,7 @@
 
 // The document shell. typst-html owns `<html>`, `<head>` and `<body>`, so this
 // emits none of them; the stylesheet link sits at the top of the body, which
-// browsers accept and baudelaire lifts back into the head for a single-file
-// export.
+// browsers accept and an `after` hook in `config.kdl` moves into the head.
 #let shell(page, main) = {
   let title = page.frontmatter.at("title", default: site-title)
   set document(title: title)
