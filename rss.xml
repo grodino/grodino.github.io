@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Augustin Godinot</title>
+    <link>https://godinot.xyz/</link>
+    <description>Postdoctoral researcher, MPI-SWS</description>
+    <item>
+      <title>PhD Defense</title>
+      <link>https://godinot.xyz/research/008-defense/</link>
+      <guid>https://godinot.xyz/research/008-defense/</guid>
+      <description>Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers</description>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Robust ML Auditing using Prior Knowledge</title>
+      <link>https://godinot.xyz/research/007-audit-with-prior/</link>
+      <guid>https://godinot.xyz/research/007-audit-with-prior/</guid>
+      <description>How can auditors use prior knowledge to improve the robustness of their audit?</description>
+      <pubDate>Thu, 01 May 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Queries, Representation &amp; Detection: The Next 100 Model Fingerprinting Schemes</title>
+      <link>https://godinot.xyz/research/006-qurd/</link>
+      <guid>https://godinot.xyz/research/006-qurd/</guid>
+      <description>How do we evaluate fingerprinting methods and how can we do better?</description>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Under manipulations, are there AI models harder to audit?</title>
+      <link>https://godinot.xyz/research/005-manipulated-audits/</link>
+      <guid>https://godinot.xyz/research/005-manipulated-audits/</guid>
+      <description>Under platform manipulations, AI model cannot be audited in black box more robustly than by random sampling.</description>
+      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>LDPC error correcting codes</title>
+      <link>https://godinot.xyz/research/004-ldpc/</link>
+      <guid>https://godinot.xyz/research/004-ldpc/</guid>
+      <description>Generation and simulation of LDPC codes</description>
+      <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Exposure diversity in music recommender systems</title>
+      <link>https://godinot.xyz/research/003-recodiv/</link>
+      <guid>https://godinot.xyz/research/003-recodiv/</guid>
+      <description>Study of exposure diversity through the lens of an Heterogeneous Networks diversity measure.</description>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>graphia</title>
+      <link>https://godinot.xyz/research/002-graphia/</link>
+      <guid>https://godinot.xyz/research/002-graphia/</guid>
+      <description>Practical analysis of dynamical networks. Development of an analysis tool in Rust.</description>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Real-time artificial horizon</title>
+      <link>https://godinot.xyz/research/001-stm32-hal/</link>
+      <guid>https://godinot.xyz/research/001-stm32-hal/</guid>
+      <description>Implementation of Hardware Abstraction Layer modules for the screen and I2C peripherals on the STM32F746 processor. Developed an artificial horizon as an example.</description>
+      <pubDate>Sat, 02 May 2020 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

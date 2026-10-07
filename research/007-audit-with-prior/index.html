@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robust ML Auditing using Prior Knowledge</title>
+    <meta name="description" content="How can auditors use prior knowledge to improve the robustness of their audit?">
+    <meta name="author" content="Augustin Godinot">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Robust ML Auditing using Prior Knowledge">
+    <meta property="og:description" content="How can auditors use prior knowledge to improve the robustness of their audit?">
+    <meta property="og:url" content="https://godinot.xyz/research/007-audit-with-prior/">
+    <meta property="og:site_name" content="Augustin Godinot">
+    <meta property="og:locale" content="en">
+    <meta property="og:image" content="game.png">
+    <meta property="og:image:alt" content="Interactions between the platform, the auditor and the users">
+    <meta property="article:published_time" content="2025-05-01">
+    <meta property="article:author" content="Augustin Godinot">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Robust ML Auditing using Prior Knowledge">
+    <meta name="twitter:description" content="How can auditors use prior knowledge to improve the robustness of their audit?">
+    <meta name="twitter:image" content="game.png">
+    <link rel="canonical" href="https://godinot.xyz/research/007-audit-with-prior/">
+    <link rel="alternate" type="application/rss+xml" title="Augustin Godinot" href="https://godinot.xyz/rss.xml">
+  <link rel="stylesheet" href="/assets/style.css"></head>
+  <body>
+    <header class="site-header">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="masthead">
+        <a class="brand" href="/">Augustin Godinot</a>
+        <p class="site-tagline">Postdoctoral researcher, MPI-SWS</p>
+      </div>
+      <nav class="top-nav" aria-label="Primary"><a href="/">home</a><a href="/research/" aria-current="true">research</a><a href="/teaching/">teaching</a><a href="/news/">news</a></nav>
+    </header>
+    <main class="content" id="main">
+      <article class="project">
+        <header class="project-head">
+          <div class="project-title">
+            <h1 id="robust-ml-auditing-using-prior-knowledge">Robust ML Auditing using Prior Knowledge</h1>
+            <p class="paper-authors"><span><a href="https://jadegarciabourree.github.io/">Jade Garcia Bourrée*</a><sup>1,2</sup></span>, <span><a href="https://grodino.github.io">Augustin Godinot*</a><sup>2,1,3,4</sup></span>, <span><a href="https://devos50.github.io/">Martijn de Vos</a><sup>5</sup></span>, <span><a href="https://mvujas.com/">Milos Vujasinovic</a><sup>5</sup></span>, <span><a href="https://blitzwas.github.io/">Sayan Biswas</a><sup>5</sup></span>, <span><a href="https://homepages.laas.fr/gtredan/">Gilles Tredan</a><sup>6,7</sup></span>, <span><a href="https://erwanlemerrer.github.io/">Erwan Le Merrer</a><sup>1</sup></span>, <span><a href="https://people.epfl.ch/anne-marie.kermarrec">Anne-Marie Kermarrec</a><sup>5</sup></span></p>
+            <p class="paper-affiliations"><span><sup>1</sup>Inria</span> <span><sup>2</sup>Université de Rennes</span> <span><sup>3</sup>IRISA/CNRS</span> <span><sup>4</sup>PEReN</span> <span><sup>5</sup>EPFL</span> <span><sup>6</sup>LAAS</span> <span><sup>7</sup>CNRS</span></p>
+          </div>
+          <div class="project-side">
+            <dl class="facts"></dl>
+            <span class="project-links"><span class="project-date"><time class="date" datetime="2025-05-01">May 1, 2025</time></span><a href="https://openreview.net/forum?id=AiaVCVDuxF" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"></path><path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>ICML25</a><a href="https://arxiv.org/abs/2505.04796" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.732 24.269" aria-hidden="true"><g transform="translate(-566.984 -271.548)"><path d="M573.549,280.916l2.266,2.738,6.674-7.84c.353-.47.52-.717.353-1.117a1.218,1.218,0,0,0-1.061-.748h0a.953.953,0,0,0-.712.262Z" fill="currentColor"></path><path d="M579.525,282.225l-10.606-10.174a1.413,1.413,0,0,0-.834-.5,1.09,1.09,0,0,0-1.027.66c-.167.4-.047.681.319,1.206l8.44,10.242h0l-6.282,7.716a1.336,1.336,0,0,0-.323,1.3,1.114,1.114,0,0,0,1.04.69A.992.992,0,0,0,571,293l8.519-7.92A1.924,1.924,0,0,0,579.525,282.225Z" fill="#b31b1b"></path><path d="M584.32,293.912l-8.525-10.275,0,0L573.53,280.9l-1.389,1.254a2.063,2.063,0,0,0,0,2.965l10.812,10.419a.925.925,0,0,0,.742.282,1.039,1.039,0,0,0,.953-.667A1.261,1.261,0,0,0,584.32,293.912Z" fill="currentColor"></path></g></svg>arXiv</a><a href="/assets/research/007-audit-with-prior/poster.pdf" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><rect x="48" y="80" width="416" height="272" rx="32" ry="32" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"></rect><path d="M256 416v-64M256 80V48M400 464l-32-112M112 464l32-112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>poster</a><a href="https://github.com/grodino/merlin" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M160 368L32 256l128-112M352 368l128-112-128-112M304 96l-96 320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>code</a><a href="https://scholar.google.com/scholar?q=%22Robust+ML+Auditing+using+Prior+Knowledge%22" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" fill="currentColor"></path></svg>scholar</a></span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Do you remember Dieselgate? The car computer would detect when it was on a test-bench and reduce the engine power to fake environmental compliance. Well, this can happen with AI regulation too.</p>
+          <div class="figure-aside">
+            <figure>
+              <img src="/assets/research/007-audit-with-prior/game.png" alt="Interactions between the platform, the auditor and the users" width="1504" height="1108" style="display: block; width: 25em" loading="lazy" decoding="async">
+              <figcaption>Figure 1: Interactions between the platform, the auditor and the users</figcaption>
+            </figure>
+          </div>
+          <p>An audit is pretty straightforward.</p>
+          <ol>
+            <li>I, the auditor 🕵️ come up with questions to ask your model.</li>
+            <li>You, the platform 😈 answer my questions.</li>
+            <li>I look at your answers and decide whether your system abides by the law by computing a series of aggregate metrics.</li>
+          </ol>
+          <p>Now, you know the metric, you know the questions, and I don’t have access to your model. Thus, nothing prevents you from manipulating the answers of your model to pass the audit. And this is very easy! In fact, <strong>any fairness mitigation method can be transformed into an audit manipulation attack.</strong></p>
+          <p>There are two main approaches to avoid manipulations.</p>
+          <ul>
+            <li>🔒Crypto guarantees: the model provider is forced to commit their model and sign every answer.</li>
+            <li>📐Clever ML tricks: the auditor uses information about the model (training data, model structure, …) to understand what is a “good answer”.</li>
+          </ul>
+          <p>In this paper, we formalize the second approach as a search for efficient “audit priors”. We instantiate our framework with a simple idea: just look at the accuracy of the platform’s answers. Our experiments show that this can help reduce the amount of unfairness a platform could hide.</p>
+          <div class="figure-wide">
+            <figure>
+              <img src="/assets/research/007-audit-with-prior/concealable_unfairness.png" alt="The amount of unfairness a platform can hide as a function of the auditor query budget" width="1351" height="490" style="display: block; width: 80%" loading="lazy" decoding="async">
+              <figcaption>Figure 2: The concealable unfairness for different audit budgets (<em>i.e.</em>, data samples from the labeled dataset). We highlight this for two features of the CelebA dataset (left) and for two different ML models trained on the ACSEmployment dataset (right).</figcaption>
+            </figure>
+          </div>
+          <p>If you want to read more about this, I encourage you to read the <a href="https://arxiv.org/abs/2505.04796">paper</a>, but not only! Recently, there has been a lot of exciting works on robust audits, here are a few I enjoyed:</p>
+          <ul>
+            <li><a href="https://arxiv.org/abs/2402.02675">Verifiable evaluations of machine learning models using zkSNARKs</a></li>
+            <li><a href="https://arxiv.org/abs/2504.00874">P2NIA: Privacy-Preserving Non-Iterative Auditing</a></li>
+            <li><a href="https://arxiv.org/abs/2502.03773">ExpProof : Operationalizing Explanations for Confidential Models with ZKPs</a></li>
+            <li><a href="https://arxiv.org/abs/2305.13883">On the relevance of APIs facing fairwashed audits</a></li>
+            <li><a href="https://arxiv.org/abs/2410.02777">OATH: Efficient and Flexible Zero-Knowledge Proofs of End-to-End ML Fairness</a></li>
+          </ul>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-line">Copyright © Augustin Godinot<span class="footer-sep" aria-hidden="true">·</span>last updated: <time datetime="2026-10-07">2026-10-07</time><span class="footer-sep" aria-hidden="true">·</span><span class="feeds"><a href="/rss.xml">RSS</a></span></p>
+    </footer>
+  </body>
+</html>

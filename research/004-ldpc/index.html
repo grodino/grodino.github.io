@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LDPC error correcting codes</title>
+    <meta name="description" content="Generation and simulation of LDPC codes">
+    <meta name="author" content="Augustin Godinot">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LDPC error correcting codes">
+    <meta property="og:description" content="Generation and simulation of LDPC codes">
+    <meta property="og:url" content="https://godinot.xyz/research/004-ldpc/">
+    <meta property="og:site_name" content="Augustin Godinot">
+    <meta property="og:locale" content="en">
+    <meta property="og:image" content="cover.png">
+    <meta property="og:image:alt" content="Bit error rate of Gallager codes against SNR">
+    <meta property="article:published_time" content="2022-02-09">
+    <meta property="article:author" content="Augustin Godinot">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LDPC error correcting codes">
+    <meta name="twitter:description" content="Generation and simulation of LDPC codes">
+    <meta name="twitter:image" content="cover.png">
+    <link rel="canonical" href="https://godinot.xyz/research/004-ldpc/">
+    <link rel="alternate" type="application/rss+xml" title="Augustin Godinot" href="https://godinot.xyz/rss.xml">
+    <link rel="stylesheet" href="/assets/math.css">
+  <link rel="stylesheet" href="/assets/style.css"></head>
+  <body>
+    <header class="site-header">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="masthead">
+        <a class="brand" href="/">Augustin Godinot</a>
+        <p class="site-tagline">Postdoctoral researcher, MPI-SWS</p>
+      </div>
+      <nav class="top-nav" aria-label="Primary"><a href="/">home</a><a href="/research/" aria-current="true">research</a><a href="/teaching/">teaching</a><a href="/news/">news</a></nav>
+    </header>
+    <main class="content" id="main">
+      <article class="project">
+        <header class="project-head">
+          <div class="project-title">
+            <h1 id="ldpc-error-correcting-codes">LDPC error correcting codes</h1>
+          </div>
+          <div class="project-side">
+            <dl class="facts"></dl>
+            <span class="project-links"><span class="project-date"><time class="date" datetime="2022-02-09">February 9, 2022</time></span><a href="https://github.com/grodino/ldpc/releases/download/v0.1/report.pdf" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"></path><path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>report</a><a href="https://github.com/grodino/ldpc" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M160 368L32 256l128-112M352 368l128-112-128-112M304 96l-96 320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>code</a></span>
+          </div>
+        </header>
+        <div class="prose">
+          <p>Used in IEEE 802.11n-2009 (Wi-Fi), 10GB Ethernet and 5G, LDPC codes are starting to replace Turbo Codes in systems with a large <em>code rate</em>. In this work, we study Low-Density Parity-Check (LDPC) codes in two channels: the Binary Erasure Channel (BEC) and the Binary Memoryless Channel (BMC). To quantify the performance of the codes, we will compute their Bit Error Rate (BER) <math><msub><mi>𝑃</mi><mi>𝑒</mi></msub></math> and Block Error Rate (BLER) <math><msub><mi>𝑃</mi><mi>𝑏</mi></msub></math>.</p>
+          <h4 id="implementation">Implementation</h4>
+          <p>The LDPC decoding and code generation were implemented in <code>Rust</code>. All the code is thoroughly documented and can be accessed at this address: <a href="https://github.com/grodino/ldpc">https://github.com/grodino/ldpc</a>. The commands associated to each figure in the report are described in the <code>readme.md</code> file.</p>
+          <h3 id="report-and-results">Report and results</h3>
+          <p>The report with the results can be downloaded <a href="https://github.com/grodino/ldpc/releases/download/v0.1/report.pdf">here</a></p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-line">Copyright © Augustin Godinot<span class="footer-sep" aria-hidden="true">·</span>last updated: <time datetime="2026-10-07">2026-10-07</time><span class="footer-sep" aria-hidden="true">·</span><span class="feeds"><a href="/rss.xml">RSS</a></span></p>
+    </footer>
+  </body>
+</html>
