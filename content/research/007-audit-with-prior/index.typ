@@ -1,8 +1,8 @@
-#import "/themes/academic/parts.typ": arxiv, code, paper, poster
-
 #let frontmatter = (
   title: "Robust ML Auditing using Prior Knowledge",
   date: datetime(year: 2025, month: 5, day: 1),
+  image: "game.png",
+  alt: "Interactions between the platform, the auditor and the users",
   description: "How can auditors use prior knowledge to improve the robustness of their audit?",
   paper_authors: (
     (name: "Jade Garcia Bourrée*", affiliation: "Inria, Université de Rennes"),
@@ -14,12 +14,13 @@
     (name: "Erwan Le Merrer", url: "https://erwanlemerrer.github.io/", affiliation: "Inria"),
     (name: "Anne-Marie Kermarrec", url: "https://people.epfl.ch/anne-marie.kermarrec", affiliation: "EPFL"),
   ),
+  links: (
+    paper: (url: "https://openreview.net/forum?id=AiaVCVDuxF", venue: "ICML25"),
+    arxiv: "https://arxiv.org/abs/2505.04796",
+    poster: "poster.pdf",
+    code: "https://github.com/grodino/merlin",
+  ),
 )
-
-#paper("https://openreview.net/forum?id=AiaVCVDuxF", "ICML25")
-#arxiv("https://arxiv.org/abs/2505.04796")
-#poster("poster.pdf")
-#code("https://github.com/grodino/merlin")
 
 Do you remember Dieselgate? The car computer would detect when it was on a test-bench and reduce the
 engine power to fake environmental compliance. Well, this can happen with AI regulation too.

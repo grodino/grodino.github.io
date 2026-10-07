@@ -1,6 +1,8 @@
 #let frontmatter = (
   title: "Real-time artificial horizon",
   date: datetime(year: 2020, month: 5, day: 2),
+  image: "artificial-horizon.jpg",
+  alt: "A digital artificial horizon on an STM32F746 board",
   description: "Implementation of Hardware Abstraction Layer modules for the screen and I2C peripherals on the STM32F746 processor. Developed an artificial horizon as an example.",
 )
 

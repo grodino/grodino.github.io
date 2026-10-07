@@ -166,41 +166,6 @@
   h("time", class: "date", datetime: date.iso, date.display)
 }
 
-// One project, as a card. Reads the row shape a listing entry and the page
-// catalogue share, so the same call renders the landing page's selection, the
-// `/work/` index, and a `stack` term page.
-//
-// The picture is `image:` from the project's own frontmatter, which is also the
-// one the social card names: one field, not a second `cover` beside it. The
-// summary is `entry.description`, which the build already resolved from
-// `description` or its `summary` alias.
-#let work-card(page, entry) = {
-  let summary = entry.description
-  h("li", class: "card", h("a", class: "card-link", href: entry.url, {
-    if entry.image != none {
-      h("span", class: "card-cover", h("img", src: entry.image, alt: "", loading: "lazy"))
-    }
-    h("span", class: "card-body", {
-      h("span", class: "card-head", {
-        h("span", class: "card-title", entry.label)
-        // The year alone, off the ISO date rather than the localized one: a
-        // card has room for four characters, and "March 1, 2026" is not it.
-        if entry.date != none { h("span", class: "card-year", entry.date.slice(0, count: 4)) }
-      })
-      if summary != none { h("span", class: "card-summary", summary) }
-      let terms = entry.taxonomies.at("stack", default: ())
-      if terms.len() > 0 {
-        h("span", class: "card-stack", for term in terms { h("span", class: "chip", term) })
-      }
-    })
-  }))
-}
-
-#let work-grid(page, entries) = h("ul", class: "grid", for entry in entries {
-  work-card(page, entry)
-})
-
-
 // Prev/next through the work, as one forward link: a case study ends by
 // offering the next project rather than a symmetric pair of arrows.
 #let next-project(page) = {
@@ -241,6 +206,15 @@
 // The bio rides in a labelled `metadata`, which renders nothing itself, so the
 // template finds it among the body's children and places its value.
 #let bio(body) = [#metadata(body)<bio>]
+
+// A section heading with a link on the same line, pushed to the right: a
+// landing-page selection and the way to everything it was selected from,
+// `#section-head("Selected projects", link("/research/")[All projects →])`.
+// The `id` is the one a plain `= heading` would get, so anchors keep working.
+#let section-head(title, more) = h("div", class: "section-head", {
+  h("h2", id: lower(title).replace(regex("[^\\p{L}\\p{N}]+"), "-").trim("-"), title)
+  h("span", class: "section-more", more)
+})
 
 // A passage that starts folded behind its opening, `summary`, on a phone and
 // unfolded on a wider screen, and folds or unfolds on a click on either. A
@@ -283,6 +257,10 @@
     stroke-width: "32",
   ),
 )
+
+// A report is a paper that went nowhere: the same page, named as such.
+#let report(url) = paper(url, "report")
+#let manuscript(url) = paper(url, "manuscript")
 
 #let arxiv(url) = links-icon(url, "arXiv", viewBox: "0 0 17.732 24.269", h(
   "g",
@@ -359,7 +337,7 @@
   ),
 )
 
-#let code(url) = links-icon(url, "Code", h(
+#let code(url) = links-icon(url, "code", h(
   "path",
   d: "M160 368L32 256l128-112M352 368l128-112-128-112M304 96l-96 320",
   fill: "none",
@@ -368,3 +346,195 @@
   stroke-linejoin: "round",
   stroke-width: "32",
 ))
+
+#let video(url) = links-icon(
+  url,
+  "video",
+  h(
+    "path",
+    d: "M374.79 308.78L457.5 367a16 16 0 0022.5-14.62V159.62A16 16 0 00457.5 145l-82.71 58.22A16 16 0 00368 216.3v79.4a16 16 0 006.79 13.08z",
+    fill: "none",
+    stroke: "currentColor",
+    stroke-linecap: "round",
+    stroke-linejoin: "round",
+    stroke-width: "32",
+  ),
+  h(
+    "path",
+    d: "M268 384H84a52.15 52.15 0 01-52-52V180a52.15 52.15 0 0152-52h184.48A51.68 51.68 0 01320 179.52V332a52.15 52.15 0 01-52 52z",
+    fill: "none",
+    stroke: "currentColor",
+    stroke-miterlimit: "10",
+    stroke-width: "32",
+  ),
+)
+
+#let scholar(url) = links-icon(url, "scholar", viewBox: "0 0 24 24", h(
+  "path",
+  d: profile-icons.scholar,
+  fill: "currentColor",
+))
+
+// A title as a Google Scholar query, quoted so Scholar matches the phrase. Only
+// the characters that would end or split a query string are escaped: a browser
+// encodes the rest itself.
+#let scholar-search(title) = {
+  let escaped = (
+    ("%", "%25"),
+    ("&", "%26"),
+    ("+", "%2B"),
+    ("#", "%23"),
+    ("?", "%3F"),
+    ("\"", "%22"),
+    (" ", "+"),
+  ).fold(title, (s, pair) => s.replace(pair.at(0), pair.at(1)))
+  "https://scholar.google.com/scholar?q=%22" + escaped + "%22"
+}
+
+// The work's links, from its frontmatter `links:`, in the order a reader
+// reaches for them. Each is a URL, or a file beside the page; `paper` is
+// `(url: .., venue: ..)`, the venue being the pill's text, or an array of
+// them for a work published more than once.
+//
+// The Scholar pill is `links.scholar` when given, and otherwise a search for the
+// title, for any work that is a paper: one with authors or a paper link.
+#let work-links(entry, resolve, class: "work-links") = {
+  let extra = entry.at("extra", default: (:))
+  let links = extra.at("links", default: (:))
+  let pills = ()
+  let paper-link = links.at("paper", default: none)
+  let paper-links = if paper-link == none { () } else if type(paper-link) == array { paper-link } else { (paper-link,) }
+  for paper-link in paper-links {
+    let (url, venue) = if type(paper-link) == str { (paper-link, "paper") } else {
+      (paper-link.url, paper-link.at("venue", default: "paper"))
+    }
+    pills.push(paper(resolve(url), venue))
+  }
+  for (key, pill) in (manuscript: manuscript, report: report, arxiv: arxiv, slides: slides, poster: poster, video: video, code: code) {
+    let url = links.at(key, default: none)
+    if url != none { pills.push(pill(resolve(url))) }
+  }
+  let is-paper = extra.at("paper_authors", default: ()).len() > 0 or paper-link != none
+  let scholar-url = links.at("scholar", default: if is-paper { scholar-search(entry.label) })
+  if scholar-url != none { pills.push(scholar(scholar-url)) }
+  if pills.len() > 0 { h("span", class: class, pills.join()) }
+}
+
+// One work, as a row: its picture on the left with the year on it, then the
+// title with its links beside it, the authors and the summary, stacked. Reads the row shape a listing
+// entry and the page catalogue share, so the same call renders the landing
+// page's selection, the `/research/` index, and a `stack` term page.
+//
+// The picture is `image:` from the work's own frontmatter, which is also the
+// one the social card names. The authors are `paper_authors:`, each
+// `(name: .., url: ..)`; the site's own author is set apart from the others.
+//
+// A row only knows its URL, not the folder it was written in, so a file named
+// relative to the work (`slides.pdf`) is looked up under `/assets/` at the
+// work's URL: keep a work's folder named as its URL slug.
+#let work-card(page, entry) = {
+  let extra = entry.at("extra", default: (:))
+  let resolve(path) = if path.contains("://") or path.starts-with("/") or path.starts-with("mailto:") {
+    path
+  } else {
+    "/assets" + entry.url + path
+  }
+  // The year alone, off the ISO date rather than the localized one, and the
+  // venue the (first) paper pill names without its year: `ICML25` -> `ICML`.
+  let year = if entry.date != none { entry.date.slice(0, count: 4) }
+  let paper-link = extra.at("links", default: (:)).at("paper", default: none)
+  if type(paper-link) == array { paper-link = paper-link.at(0, default: none) }
+  let venue = if type(paper-link) == dictionary and paper-link.at("venue", default: none) != none {
+    paper-link.venue.replace(regex("[\\s'’-]*\\d+$"), "")
+  }
+  h("li", class: "work-row", {
+    // The picture, with a bar across its top: the year, and the venue when
+    // the work is a paper. A work without a picture still gets the frame, so
+    // the bar has somewhere to sit and the rows line up.
+    h("a", class: "work-cover", href: entry.url, tabindex: "-1", aria-hidden: "true", {
+      if entry.image != none { h("img", src: resolve(entry.image), alt: "", loading: "lazy") }
+      if year != none or venue != none {
+        h("span", class: "work-year", (year, venue).filter(x => x != none).join(" · "))
+      }
+    })
+    h("div", class: "work-body", {
+      h("p", class: "work-head", {
+        h("a", class: "work-title", href: entry.url, {
+          // The year and venue again, as text, shown only where the
+          // stylesheet hides the picture they otherwise sit on.
+          if year != none or venue != none {
+            h("span", class: "work-year-inline", aria-hidden: "true", (year, venue).filter(x => x != none).join(" · ") + " ·")
+          }
+          entry.label
+        })
+        work-links(entry, resolve)
+      })
+      let authors = extra.at("paper_authors", default: ())
+      if authors.len() > 0 {
+        h("p", class: "work-authors", authors
+          .map(a => {
+            let me = author not in (none, "") and a.name.trim("*") == author
+            let name = if a.at("url", default: none) != none { h("a", href: a.url, a.name) } else { a.name }
+            if me { h("span", class: "work-me", name) } else { name }
+          })
+          .join(", "))
+      }
+      if entry.description != none { h("p", class: "work-summary", entry.description) }
+      let terms = entry.taxonomies.at("stack", default: ())
+      if terms.len() > 0 {
+        h("p", class: "work-stack", for term in terms {
+          h("a", class: "chip", href: "/stack/" + term + "/", term)
+        })
+      }
+    })
+  })
+}
+
+// The rows, in a list. With `timeline: true`, they are grouped by year, a
+// column of years runs beside them, newest first, and each year links to its
+// group, whose id is `year-<year>`.
+#let work-grid(page, entries, timeline: false) = {
+  let year(entry) = if entry.date != none { entry.date.slice(0, count: 4) } else { "" }
+  let years = entries.map(year).dedup()
+  if not timeline or years.filter(y => y != "").len() == 0 {
+    return h("ul", class: "work-list", for entry in entries { work-card(page, entry) })
+  }
+
+  h("div", class: "work-timeline", {
+    h("nav", class: "year-nav", aria-label: label(page, "years", "Years"), h("ol", for y in years.filter(y => y != "") {
+      h("li", h("a", href: "#year-" + y, y))
+    }))
+    h("div", class: "work-years", for y in years {
+      h("section", class: "work-year-group", id: if y != "" { "year-" + y }, h("ul", class: "work-list", for entry in entries.filter(e => year(e) == y) {
+        work-card(page, entry)
+      }))
+    })
+  })
+
+  // Lights the year being read, in CSS alone: CSS cannot pair a link with its
+  // group by itself, so this names them, one rule per year.
+  //
+  // Where scroll-driven animations exist, each group is a view timeline and
+  // its link is lit while the group crosses a line near the top of the window
+  // (the animation is in `style.css`). Elsewhere, the link of the group last
+  // jumped to is lit, or the newest year before any jump.
+  let ys = years.filter(y => y != "")
+  let link(y) = ".year-nav a[href=\"#year-" + y + "\"]"
+  let targeted = (
+    (".work-timeline:not(:has(:target)) .year-nav li:first-child a",)
+      + ys.map(y => ".work-timeline:has(#year-" + y + ":target) " + link(y))
+  )
+  h("style", {
+    "@supports not (animation-timeline: view()) {\n"
+    targeted.join(",\n") + " { color: var(--accent); font-weight: 650; }\n"
+    targeted.map(sel => sel + "::before").join(",\n") + " { border-color: var(--accent); background: var(--accent); }\n"
+    "}\n"
+    "@supports (animation-timeline: view()) {\n"
+    ".work-timeline { timeline-scope: " + ys.map(y => "--year-" + y).join(", ") + "; }\n"
+    for y in ys {
+      "#year-" + y + " { view-timeline-name: --year-" + y + "; }\n"
+      link(y) + ", " + link(y) + "::before { animation-timeline: --year-" + y + "; }\n"
+    }
+    "}"
+  })
+}

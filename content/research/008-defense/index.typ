@@ -1,7 +1,13 @@
 #let frontmatter = (
   title: "PhD Defense",
   date: datetime(year: 2026, month: 2, day: 10),
+  image: "manuscript-cover.png",
+  alt: "Manuscript cover",
   description: "Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers",
+  links: (
+    manuscript: "manuscript-Augustin_Godinot-DRAFT.pdf",
+    slides: "Defense Slides.pdf",
+  ),
 )
 
 = Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers

@@ -1,7 +1,17 @@
 #let frontmatter = (
   title: "Exposure diversity in music recommender systems",
   date: datetime(year: 2021, month: 1, day: 28),
+  image: "cover.png",
+  alt: "The facets of diversity: variety, balance and disparity",
   description: "Study of exposure diversity through the lens of an Heterogeneous Networks diversity measure.",
+  links: (
+    paper: (
+      (url: "recodiv_CNA.pdf", venue: "CNA21"),
+      (url: "https://doi.org/10.1007/s41109-022-00530-7", venue: "journal"),
+    ),
+    slides: "slides_CNA_2021.pdf",
+    code: "https://github.com/grodino/recodiv",
+  ),
 )
 
 During this five month project with #link("https://www-complexnetworks.lip6.fr/~tarissan/")[Fabien Tarissan], I studied the diversity of the recommendations made by music recommender systems.

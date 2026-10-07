@@ -1,8 +1,8 @@
-#import "/themes/academic/parts.typ": arxiv, paper, poster, slides
-
 #let frontmatter = (
   title: "Under manipulations, are there AI models harder to audit?",
   date: datetime(year: 2023, month: 10, day: 1),
+  image: "threat-model.svg",
+  alt: "Threat model of the manipulation-proof auditing game",
   description: "Under platform manipulations, AI model cannot be audited in black box more robustly than by random sampling.",
   paper_authors: (
     (name: "Augustin Godinot", url: "https://grodino.github.io", affiliation: "Université de Rennes, Inria, IRISA/CNRS, PEReN"),
@@ -11,12 +11,13 @@
     (name: "Camilla Penzo", url: "https://chairgovreg.fondation-dauphine.fr/fr/camilla-penzo", affiliation: "PEReN"),
     (name: "François Taïani", url: "https://team.inria.fr/wide/team/francois-taiani/", affiliation: "Université de Rennes, Inria, IRISA/CNRS"),
   ),
+  links: (
+    paper: (url: "https://openreview.net/forum?id=Q40m3Gcsd9", venue: "SaTML24"),
+    arxiv: "https://arxiv.org/abs/2402.09043",
+    slides: "slides.pdf",
+    poster: "poster.pdf",
+  ),
 )
-
-#paper("https://openreview.net/forum?id=Q40m3Gcsd9", "SaTML24")
-#arxiv("https://arxiv.org/abs/2402.09043")
-#slides("slides.pdf")
-#poster("poster.pdf")
 
 You are a regulator, I am a platform hosting a Machine Learning (ML) model. You want to verify
 that my model does not discriminate marginalized populations. I want to have the most accurate model

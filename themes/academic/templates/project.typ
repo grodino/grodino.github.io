@@ -2,7 +2,7 @@
 // own frontmatter, the write-up, then the next project.
 
 #import "@baudelaire/html:0.1.0": h
-#import "../parts.typ": label, next-project, posted, shell, titlecase
+#import "../parts.typ": label, next-project, posted, shell, titlecase, work-links
 
 // The facts a project page shows beside the date, in this order, read from the
 // page's own frontmatter. A field the page does not set is simply absent, so a
@@ -15,6 +15,14 @@
     h("h1", page.frontmatter.title)
     let summary = page.frontmatter.at("summary", default: none)
     if summary != none { h("p", class: "tagline", summary) }
+
+    // The paper, its preprint, the slides..., from frontmatter `links:`, the
+    // same pills the work's row in a listing carries.
+    work-links(
+      (label: page.frontmatter.title, extra: page.frontmatter),
+      path => page.assets.at(path, default: path),
+      class: "project-links",
+    )
 
     h("dl", class: "facts", {
       let date = posted(page.date)
@@ -45,17 +53,9 @@
     })
   })
 
-  // The lead image, from `image:`, which is also the one the card in the grid
-  // and the social card both draw.
-  let cover = page.frontmatter.at("image", default: none)
-  if cover != none {
-    h("figure", class: "cover", h(
-      "img",
-      src: cover,
-      alt: page.frontmatter.at("alt", default: ""),
-      loading: "eager",
-    ))
-  }
+  // No lead image here: `image:` is the picture of the work's row in a listing
+  // and of the social card, and a work's own figures sit in its body, so
+  // drawing it again on top would show the same picture twice.
 
   // A link naming a file beside the page (`#link("slides.pdf")`, or a pill
   // such as `#poster("poster.pdf")`) points at where that file is served,

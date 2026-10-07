@@ -1,7 +1,13 @@
 #let frontmatter = (
   title: "LDPC error correcting codes",
   date: datetime(year: 2022, month: 2, day: 9),
+  image: "cover.png",
+  alt: "Bit error rate of Gallager codes against SNR",
   description: "Generation and simulation of LDPC codes",
+  links: (
+    report: "https://github.com/grodino/ldpc/releases/download/v0.1/report.pdf",
+    code: "https://github.com/grodino/ldpc",
+  ),
 )
 
 Used in IEEE 802.11n-2009 (Wi-Fi), 10GB Ethernet and 5G, LDPC codes are

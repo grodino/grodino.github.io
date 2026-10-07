@@ -5,6 +5,7 @@
    a raw colour. */
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
   --measure: 42rem;
@@ -527,8 +528,7 @@ img {
   margin-top: 4.5rem;
 }
 
-.section-title,
-.list-title {
+.section-title {
   font-size: 0.78rem;
   font-weight: 650;
   letter-spacing: 0.1em;
@@ -537,86 +537,348 @@ img {
   margin: 0 0 1.25rem;
 }
 
-.grid {
+/* The years beside the rows: a rule with a dot per year, the one jumped to
+   filled with the accent (a `<style>` beside the list pairs each link with
+   its row). It stays in view while the rows scroll past. */
+.work-timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
-  gap: 1.25rem;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.year-nav {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  padding-block: 0.8rem;
+}
+
+.year-nav ol {
+  margin: 0;
+  padding: 0.4rem 0 1.5rem;
+  border-left: 1px solid var(--rule);
+  list-style: none;
+}
+
+.year-nav a {
+  position: relative;
+  display: block;
+  padding: 0.3rem 0 0.3rem 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+
+.year-nav a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--muted);
+  border-radius: 50%;
+  background: var(--bg);
+  transform: translateY(-50%);
+}
+
+.year-nav a:hover {
+  color: var(--fg);
+}
+
+.work-year-group {
+  scroll-margin-top: 1rem;
+}
+
+/* Where scroll-driven animations exist, the year being read is lit as the
+   page scrolls: each year's group is a view timeline (named beside the list)
+   seen through a 1px line 5rem below the top of the window, and its link
+   plays a one-frame animation while the group crosses that line. Before the
+   newest group reaches the line, its link is lit already. */
+@supports (animation-timeline: view()) {
+  .work-year-group {
+    view-timeline-axis: block;
+    view-timeline-inset: 5rem calc(100% - 5rem - 1px);
+  }
+
+  .year-nav a {
+    animation: year-current linear none;
+    animation-range: cover;
+  }
+
+  .year-nav a::before {
+    animation: year-current-dot linear none;
+    animation-range: cover;
+  }
+
+  .year-nav li:first-child a,
+  .year-nav li:first-child a::before {
+    animation-fill-mode: backwards;
+  }
+}
+
+@keyframes year-current {
+
+  from,
+  to {
+    color: var(--accent);
+    font-weight: 650;
+  }
+}
+
+@keyframes year-current-dot {
+
+  from,
+  to {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.year-nav) {
+    scroll-behavior: smooth;
+  }
+}
+
+/* One row per work: the picture on the left when there is one, then the
+   title with its links beside it, the authors and the summary, stacked. */
+.work-list {
+  display: grid;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.card-link {
+.work-row {
   display: grid;
-  height: 100%;
-  border: 1px solid var(--rule);
-  border-radius: 0.9rem;
-  background: var(--raised);
-  color: inherit;
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-block: 0.8rem;
 }
 
-.card-link:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-}
-
-.card-cover {
+/* The picture is letterboxed rather than cropped: most are figures, and a
+   figure cut at the edges loses its axes. A bar laid across its top carries
+   the year and, for a paper, the venue. */
+.work-cover {
+  position: relative;
   display: block;
-  aspect-ratio: 16 / 9;
-  background: var(--accent-soft);
+  align-self: start;
+  aspect-ratio: 4 / 3;
+  /* border: 1px solid var(--rule); */
+  background: var(--raised);
   overflow: hidden;
 }
 
-.card-cover img {
+.work-cover:not(:has(img)) {
+  background: var(--accent-soft);
+}
+
+.work-cover img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 0.4rem;
+  object-fit: contain;
 }
 
-.card-body {
+.work-year {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.05rem 0.45rem;
+  text-align: center;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.work-body {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.3rem;
   align-content: start;
-  padding: 1.1rem 1.2rem 1.3rem;
 }
 
-.card-head {
+.work-body p {
+  margin: 0;
+  text-align: start;
+}
+
+/* The title on the left, its pills pushed to the right; they fall under the
+   title when the line is too short for both. */
+.work-head {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
 }
 
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 650;
+/* The pills pushed to the right edge. */
+.work-head .work-links {
+  justify-content: flex-end;
+  margin-top: 0 !important;
+  margin-left: auto;
+}
+
+/* Where the news sits beside the bio, the pills hold one line and the title
+   wraps beside them instead, the pills level with its first line. */
+@media (width > 68rem) {
+  .work-head {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  .work-title {
+    min-width: 0;
+  }
+
+  .work-head .work-links {
+    flex: none;
+    flex-wrap: nowrap;
+    margin-top: 0.1rem !important;
+  }
+}
+
+.work-title {
+  color: var(--fg);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
   letter-spacing: -0.01em;
+  text-decoration: none;
 }
 
-.card-year,
-.card-summary {
+.work-title:hover {
+  color: var(--accent);
+}
+
+.work-summary {
   color: var(--muted);
 }
 
-.card-year {
-  font-size: 0.85rem;
-  white-space: nowrap;
+/* The year as text, before the title, for when the picture is hidden. */
+.work-year-inline {
+  display: none;
+  margin-right: 0.2em;
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85em;
+  font-weight: 400;
 }
 
-.card-summary {
+.work-authors {
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.work-authors a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-authors a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.work-me {
+  font-weight: 650;
+  text-decoration: underline 1px var(--rule);
+  text-underline-offset: 0.2em;
+}
+
+.work-summary {
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
-.card-stack {
+.work-links,
+.work-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: 0.25rem;
+  gap: 0.4rem;
+  margin-top: 0.35rem !important;
+}
+
+/* The pills, smaller than on a project page, so a row stays a row. */
+.work-links .links-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.work-links .links-icon svg {
+  height: 1.1em;
+  width: auto;
+}
+
+.work-links .links-icon:hover {
+  background-color: var(--accent);
+}
+
+/* On a phone the picture goes: a figure that small says little, and the
+   text gets the full width. The year it carried moves before the title. */
+@media (max-width: 40rem) {
+  .work-row {
+    grid-template-columns: 1fr;
+  }
+
+  .work-cover {
+    display: none;
+  }
+
+  .work-timeline {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  /* The years turn into a horizontal bar above the works, stuck to the top
+     of the window as they scroll: the rule runs along its top, a dot over
+     each year. */
+  .year-nav {
+    top: 0;
+    z-index: 1;
+    margin-inline: -1.5rem;
+    padding: 0.75rem 1.5rem 0.5rem;
+    background: var(--bg);
+  }
+
+  .year-nav ol {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 0;
+  }
+
+  .year-nav a {
+    padding: 0.55rem 0 0;
+  }
+
+  .year-nav a::before {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .work-year-group {
+    scroll-margin-top: 3.5rem;
+  }
+
+  .work-head .work-year-inline {
+    display: inline;
+  }
 }
 
 .chip {
@@ -743,7 +1005,8 @@ a.chip:hover {
   background-color: var(--fg);
   border-radius: 20pt;
   color: var(--bg);
-  font-weight: bold;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
 }
 
 .links-icon svg {
@@ -772,6 +1035,28 @@ a.chip:hover {
 .prose h3>a {
   color: inherit;
   text-decoration: none;
+}
+
+/* A heading with its link on the same line, the link at the right edge. */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-block: 2.2rem 0.5rem;
+}
+
+.prose .section-head h2 {
+  margin: 0;
+}
+
+.section-more a {
+  text-decoration: none;
+}
+
+.section-more a:hover {
+  text-decoration: underline;
 }
 
 p,
@@ -1135,6 +1420,18 @@ thead th {
    A media query cannot read a custom property, so this is the one place to
    change it. */
 @media (max-width: 68rem) {
+
+  /* Narrower, the pills always go under the title, lined up with it. */
+  .work-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .work-head .work-links {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
   .hero:has(.news) {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 1rem;
@@ -1182,5 +1479,68 @@ thead th {
   body {
     color: #000;
     background: #fff;
+  }
+}
+/* News page ---------------------------------------------------------------
+   The pieces run the full width of the page on a timeline: the dates in a
+   column on the left, a line beside them with a dot at each piece, and the
+   headings and text to the right. */
+.content>.prose.news-page {
+  max-width: none;
+  --timeline-date: 8.5rem;
+  --timeline-gap: 1.5rem;
+  --timeline-dot: 9px;
+}
+
+.news-entry {
+  display: grid;
+  grid-template-columns: var(--timeline-date) minmax(0, 1fr);
+}
+
+/* The date column carries the line, so the line runs unbroken from one piece
+   to the next; the space between pieces is padding, not margin. */
+.news-entry>time {
+  position: relative;
+  padding-right: var(--timeline-gap);
+  border-right: 2px solid var(--rule);
+  color: var(--muted);
+  text-align: right;
+  /* On the heading's first line. */
+  font-size: 0.95rem;
+  line-height: 1.25;
+  padding-top: 0.2rem;
+}
+
+.news-entry>time::after {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  right: calc(var(--timeline-dot) / -2 - 1px);
+  width: var(--timeline-dot);
+  height: var(--timeline-dot);
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.news-entry-body {
+  padding-left: var(--timeline-gap);
+}
+
+.prose .news-entry-body>h2 {
+  margin-block: 0;
+}
+
+.news-entry-body>h2+p {
+  margin-top: 0;
+}
+
+@media (max-width: 560px) {
+  .content>.prose.news-page {
+    --timeline-date: 5.5rem;
+    --timeline-gap: 1rem;
+  }
+
+  .news-entry>time {
+    font-size: 0.85rem;
   }
 }

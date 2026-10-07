@@ -1,5 +1,5 @@
 #import "@baudelaire/pages:0.1.0": pages
-#import "/themes/academic/parts.typ": bio, collapsible, work-grid
+#import "/themes/academic/parts.typ": bio, collapsible, section-head, work-grid
 
 #let frontmatter = (
   template: "home.typ",
@@ -36,8 +36,7 @@
   ]
 ]
 
-= Selected projects
-#link("/research/")[All projects →]
+#section-head("Selected projects", link("/research/")[All projects →])
 
 
 // The latest three, newest first. The catalogue is empty on the build's first
@@ -45,5 +44,3 @@
 #let projects = pages("en").filter(p => p.collection == "research")
 #work-grid(none, projects.slice(calc.min(1, projects.len()), calc.min(4, projects.len())))
 
-
-= Service

@@ -12,8 +12,7 @@
 #let list(page, body) = shell(
   page,
   {
-    h("h1", class: "list-title", page.frontmatter.title)
-    work-grid(page, page.frontmatter.entries)
+    work-grid(page, page.frontmatter.entries, timeline: true)
 
     // Pagination links, present only once a listing splits. These are plain
     // URLs, unlike `page.nav` on a real page, which links whole pages.

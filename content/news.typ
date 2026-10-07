@@ -1,5 +1,8 @@
+#import "@baudelaire/html:0.1.0": h
+
 #let frontmatter = (
   title: "News",
+  template: "news.typ",
 )
 
 // One piece of news per entry, newest first. A list rather than calls to
@@ -10,12 +13,15 @@
 // to: the title in lower case, each run of other characters a single `-`.
 #let anchor(title) = lower(title).replace(regex("[^\p{L}\p{N}]+"), "-").trim("-")
 
-#let entry(date: none, title: none, body: none) = [
-  = #title
-  _#date.display("[month repr:long] [year]")_
-
-  #body
-]
+// Each piece on a timeline: its date in the left column, beside the line,
+// and its heading and text to the right.
+#let entry(date: none, title: none, body: none) = h("div", class: "news-entry", {
+  h("time", datetime: date.display("[year]-[month]-[day]"), date.display("[month repr:long] [year]"))
+  h("div", class: "news-entry-body", {
+    [= #title]
+    body
+  })
+})
 
 #let news = (
   (
