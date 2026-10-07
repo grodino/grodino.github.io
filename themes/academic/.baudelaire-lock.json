@@ -1,0 +1,22 @@
+{
+  "theme": "paysage",
+  "origin": {
+    "source": "bundled",
+    "name": "paysage"
+  },
+  "baudelaire": "0.0.18",
+  "files": {
+    "README.md": "f94283b07fad29794df8d792e07bb1db988d6d165b582980f444930118eb8128",
+    "assets/style.css": "412c651daddfb3fc8c3e3a5fe97f1c15064d060109a3b0b6ad78d524302e896a",
+    "assets/theme.js": "16c68feded1606abb5195377be064ccc9c96806a14e0bab5c9cffa38f2d797f6",
+    "lib.typ": "7269b02df34f08e4691302b00e2dbd8905b9a65519813ec0cde70c238b808787",
+    "parts.typ": "f012932d5fd177ddf72a22c0b6d261073d94e55ba446559ac95cb65d8c534b70",
+    "templates/home.typ": "f2f6589bb7155deb8f5e30f79af922a7e6240fbdd5b7eeb94dfe7adcd447825a",
+    "templates/list.typ": "1f92d4f0e32f6c3205ae351e161f55eb0a395f35fe4b632a780580ce765c3b75",
+    "templates/not-found.typ": "ce1210c54cd692673c4bdb713aa84e6b403e1e60b5a3a217c4124e5d80bb9e62",
+    "templates/page.typ": "0c4cc4fc1c1c50af6106f19e8d5812ee00277b0d707dc3ba3601f63be097b662",
+    "templates/project.typ": "4e715bcdd1f0903fba8e38e7d74d7f98d3a301256028a9ed513d79f3fc0dfeeb",
+    "theme.kdl": "fa750994d52e7a0c0a2a7c9e531b4f903bd3ae0ab75c0448a9e1d687df64d3db",
+    "typst.toml": "199260df75b008bb24e9692e7fb3ef0952bb6290a3c7ae3dc3e91633e0f1c000"
+  }
+}

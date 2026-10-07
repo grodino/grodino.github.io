@@ -1,0 +1,1186 @@
+/* paysage: a portfolio. A landing page that says what you do, a grid of work,
+   and case studies with room for pictures.
+
+   Every colour is a custom property declared once, below. Nothing below reads
+   a raw colour. */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+  --measure: 42rem;
+  --wide: 78rem;
+  /* Landing page: the news column's width beside the bio. The bio alone
+     sets the row's height, so a wider news column (a narrower bio) makes a
+     longer one. */
+  --news-width: 28rem;
+  /* The space between the bio and the news. */
+  --news-gap: 48px;
+  /* The width below which the news drops under the bio is not a property:
+     a media query cannot read one. It is the `max-width` of the media query
+     marked "The landing page's breakpoint", near the end. */
+  /* The profile logos under the name, on the landing page. */
+  --profile-icon-size: 18px;
+  /* The space between two news items. */
+  --news-item-gap: 0.25rem;
+
+  --fg: #000;
+  --muted: #626b78;
+  --bg: #fff;
+  --raised: #ffffff;
+  --accent: #C2410C;
+  --accent-soft: #fff5ee;
+  --link: #1F4FD1;
+  --rule: #e3e2de;
+  --shadow: 0 1px 2px rgb(20 22 26 / 5%), 0 12px 28px rgb(20 22 26 / 8%);
+
+  --sx-comment: #6b7280;
+  --sx-string: #0f7b3f;
+  --sx-number: #b45309;
+  --sx-keyword: #b4531f;
+  --sx-function: #1d4ed8;
+  --sx-variable: #1f2937;
+  --sx-type: #0f766e;
+  --sx-punctuation: #6b7280;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Below 400px the page stops shrinking and scrolls sideways instead. */
+body {
+  min-width: 400px;
+  margin: 0;
+  font-family: "Crimson Pro", serif;
+  font-size: clamp(1rem, 0.97rem + 0.2vw, 1.08rem);
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+/* Colour alone marks a link at rest; a thick underline answers the pointer
+   and the keyboard. Links styled further down (nav, cards) set their own. */
+a:hover,
+a:focus-visible {
+  text-decoration: underline 2px;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--fg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header ------------------------------------------------------------------ */
+
+/* The name block and the nav share a line, centred on each other, the nav
+   flush right. When the two no longer fit, the nav wraps under the name, and
+   `space-between` sets a lone item at the start of its line: no breakpoint,
+   the content's own width decides. */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding: 1.5rem 1.5rem 0;
+}
+
+/* Off the top of the viewport rather than off to the side, and moved by a
+   transform: taking it out of the flow and putting it back reflows the header
+   under the reader the moment they tab into the page. */
+.skip {
+  position: absolute;
+  z-index: 20;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--raised);
+  color: var(--fg);
+  text-decoration: none;
+  transform: translateY(-250%);
+}
+
+.skip:focus {
+  transform: none;
+}
+
+/* The name and its tagline, one block, which the nav centres against. On the
+   landing page the portrait sits to their left at the height of the two
+   lines, and both are set larger to give it room. That height is worked out
+   from the sizes the lines are set in, rather than measured: an image's own
+   height would otherwise set the row it should follow. */
+.masthead {
+  --brand-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --tagline-size: 1.05rem;
+}
+
+.masthead:has(.avatar) {
+  --brand-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --tagline-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 1.25rem;
+}
+
+.avatar {
+  grid-row: span 2;
+  height: calc(var(--brand-size) * 1.1 + 0.2rem + var(--tagline-size) * 1.35);
+  width: auto;
+}
+
+/* With the profile logos under the tagline, the portrait spans them too: their
+   row is the logos' `--profile-icon-size` plus the 8px above them.
+
+   Its top is the name's line box, which starts 0.2em above the name's
+   tallest glyphs (Crimson Pro: ascent 0.90em, ascenders 0.69em, line-height
+   1.1 adds no leading). The logos' row ends at their ink, so the portrait
+   runs that same 0.2em past them, and gives it back as a negative margin so
+   the rows keep their height. */
+.masthead:has(.profile-links) .avatar {
+  --overhang: calc(var(--brand-size) * 0.2);
+  grid-row: span 3;
+  height: calc(var(--brand-size) * 1.1 + 0.2rem + var(--tagline-size) * 1.35 + 8px + var(--profile-icon-size) + var(--overhang));
+  margin-bottom: calc(-1 * var(--overhang));
+}
+
+.avatar~* {
+  grid-column: 2;
+}
+
+.brand {
+  display: block;
+  font-size: var(--brand-size);
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.site-tagline {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: var(--tagline-size);
+  line-height: 1.35;
+}
+
+/* The landing page's profile logos, a row under the tagline in the tagline's
+   grey, under the name rather than the portrait: the portrait spans the first
+   two rows only. Each logo answers the pointer in link blue. */
+.profile-links {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0 0;
+  line-height: 0;
+}
+
+.profile-links a {
+  color: var(--muted);
+}
+
+.profile-links a:hover,
+.profile-links a:focus-visible {
+  color: var(--link);
+}
+
+.profile-links svg {
+  display: block;
+  width: var(--profile-icon-size);
+  height: var(--profile-icon-size);
+}
+
+/* Page to page, the name and tagline glide between their landing-page place
+   and size and their everyday ones, and the nav holds still while the rest
+   cross-fades. A cross-document view transition: the browser snapshots each
+   named element on the old page and the new one and animates between the two
+   boxes, so the boxes hug the text and the snapshot scales without stretching.
+   A browser without it simply loads the page. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+.brand,
+.site-tagline {
+  width: fit-content;
+}
+
+.brand {
+  view-transition-name: brand;
+}
+
+.site-tagline {
+  view-transition-name: tagline;
+}
+
+.top-nav {
+  view-transition-name: top-nav;
+}
+
+::view-transition-group(brand),
+::view-transition-group(tagline) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem;
+  font-size: 1.05rem;
+}
+
+.top-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* The path's slash, drawn rather than written, so each item stays one link.
+   An inline-block keeps the current item's underline off it, and the empty
+   alt text keeps screen readers from reading it out. */
+.top-nav a::before {
+  content: "/" / "";
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--muted);
+  opacity: 0.55;
+}
+
+.top-nav a:hover {
+  color: var(--fg);
+}
+
+.top-nav a[aria-current] {
+  color: var(--accent);
+  text-decoration: underline 2px var(--accent);
+  text-underline-offset: 0.25em;
+}
+
+/* Content shell -----------------------------------------------------------
+   One width for the whole page, so the prose starts under the brand rather
+   than centred inside a column the header never drew. What reads at a measure
+   is capped where it sits, and the grid pages simply do not cap. */
+
+/* Running text is justified, with hyphenation to keep the gaps even; the
+   page's `lang` tells the browser which dictionary to break words with. */
+.content p,
+.content li,
+.content .collapsible {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.content {
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+.content>.prose,
+.content>.project {
+  max-width: var(--measure);
+}
+
+/* Hero -------------------------------------------------------------------- */
+
+/* The headline wraps short and the prose under it reads at the measure, so the
+   cap belongs on each of them and never on the section: capping the section
+   caps the prose too, at a width no paragraph should be set to. */
+.hero h1 {
+  max-width: 20ch;
+}
+
+.hero>.tagline {
+  max-width: 34ch;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 1.6rem + 3vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.tagline {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+
+
+.hero-body {
+  max-width: var(--measure);
+}
+
+/* On the landing page the bio shares the row with the news: the bio at a
+   short measure, the news in what is left. Below 720px the news drops under
+   the bio, at the end of the media queries further down. The news fills to
+   `--news-width` first and the bio takes the rest of the row, so at full
+   width it is `--wide` less the news, the gap and `.content`'s side padding,
+   and it only ever shrinks with the window. */
+.hero:has(.news) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, var(--news-width));
+  gap: var(--news-gap);
+  align-items: start;
+}
+
+/* Beside the news, the row sets the bio's width, not `--measure`. */
+.hero:has(.news)>.hero-body {
+  max-width: none;
+}
+
+/* The bio alone sets the row's height: `contain: size` keeps the news from
+   adding to it, and the news stretches to fill it. Its list takes what the
+   heading, the latest piece and `All news` leave, and shows as many whole
+   lines as fit: the list wraps into columns, each a full width, so a line
+   that would not fit moves to a second column, out of sight. */
+.news {
+  contain: size;
+  align-self: stretch;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 16px;
+  background: var(--accent-soft);
+  /* Beside the bio, the box stops short of the bio's last line: a stretched
+     grid item's margins come out of its height. */
+  margin-bottom: 4rem;
+}
+
+/* The heading is a small tab pinned to the box's top-right corner, so it
+   marks the section without a line of its own. */
+.news-title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 2px 10px 4px;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 15px;
+  font-weight: 750;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+.news p {
+  margin: 0;
+  text-align: left;
+  hyphens: manual;
+}
+
+.news-year {
+  color: var(--muted);
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: tabular-nums oldstyle-nums;
+}
+
+/* Each title links to its piece on the news page, in the text's own colour:
+   the underline answers the pointer, as for any link. */
+.news-headline a,
+.news-list a {
+  color: inherit;
+}
+
+/* The latest piece: year, title, one sentence, behind an accent bar. */
+.news-latest {
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+}
+
+.news .news-headline {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-block: 0.1rem 0.3rem;
+}
+
+.news-summary {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* The next few, one line each, the years in a column of their own, packed
+   at the top: the room left under the last whole item stays above `All
+   news`. */
+.news-list {
+  flex: 1 1 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  gap: var(--news-item-gap) 48px;
+  overflow: hidden;
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+
+.content .news-list li {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+.news-list a {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+}
+
+/* On hover, the year alone is underlined, not the title beside it. The latest
+   piece's year sits outside its link and follows the headline's. */
+.news-list a:hover,
+.news-list a:focus-visible,
+.news-headline a:hover,
+.news-headline a:focus-visible {
+  text-decoration: none;
+}
+
+.news-list a:hover>.news-year,
+.news-list a:focus-visible>.news-year,
+.news-latest:has(.news-headline a:hover, .news-headline a:focus-visible) .news-year {
+  text-decoration: underline 2px;
+  text-underline-offset: 3px;
+}
+
+.news .news-more {
+  margin-top: 0.9rem;
+  font-size: 15.5px;
+  font-style: italic;
+}
+
+.hero-body> :first-child {
+  margin-top: 0;
+}
+
+.hero-body> :last-child {
+  margin-bottom: 0;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.hero-link {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--raised);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.hero-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Below the bio and news, the rest of the landing page runs full width: a
+   project grid in it should not stop at the prose measure. */
+.content>.home-rest {
+  max-width: none;
+  margin-top: 2.5rem;
+}
+
+/* Work grid --------------------------------------------------------------- */
+
+.work {
+  margin-top: 4.5rem;
+}
+
+.section-title,
+.list-title {
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-link {
+  display: grid;
+  height: 100%;
+  border: 1px solid var(--rule);
+  border-radius: 0.9rem;
+  background: var(--raised);
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.card-cover {
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+
+.card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.card-year,
+.card-summary {
+  color: var(--muted);
+}
+
+.card-year {
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.card-summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.chip {
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.more {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.more a {
+  text-decoration: none;
+}
+
+.more a:hover {
+  text-decoration: underline;
+}
+
+/* Project ----------------------------------------------------------------- */
+
+.project {
+  max-width: var(--measure);
+}
+
+.project-head h1 {
+  font-size: clamp(1.9rem, 1.5rem + 2vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+  text-wrap: balance;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  padding-block: 1rem;
+  border-block: 1px solid var(--rule);
+}
+
+.fact {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fact dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fact dd {
+  margin: 0;
+}
+
+.fact-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.cover {
+  margin: 0 0 2.5rem;
+}
+
+.cover img {
+  width: 100%;
+  border-radius: 0.9rem;
+}
+
+.next-project {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.next-project a {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.next-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.next-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.next-project a:hover .next-title {
+  color: var(--accent);
+}
+
+/* Links to paper, code... on paper page */
+.links-icon {
+  display: inline-block;
+  padding: 5pt 10pt;
+  margin: 10pt;
+  background-color: var(--fg);
+  border-radius: 20pt;
+  color: var(--bg);
+  font-weight: bold;
+}
+
+.links-icon svg {
+  vertical-align: bottom;
+  height: 20pt;
+}
+
+/* Prose ------------------------------------------------------------------- */
+
+.prose h2,
+.prose h3 {
+  margin-block: 2.2rem 0.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.prose h2 {
+  font-size: 1.4rem;
+}
+
+.prose h3 {
+  font-size: 1.12rem;
+}
+
+.prose h2>a,
+.prose h3>a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+ul,
+ol {
+  margin-block: 0 1.15rem;
+}
+
+blockquote {
+  margin-inline: 0;
+  padding-inline-start: 1.1rem;
+  border-inline-start: 3px solid var(--accent);
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+hr {
+  margin-block: 2.5rem;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+[role="doc-endnotes"] {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+pre {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.7rem;
+  background: var(--raised);
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+  /* Monospace reads larger at a given size, so match the x-height instead of
+     shrinking the text. */
+  font-size: 1em;
+  font-size-adjust: ex-height 0.53;
+}
+
+:not(pre)>code {
+  padding: 0.1em 0.35em;
+  border-radius: 0.35em;
+  background: var(--accent-soft);
+}
+
+.sx-comment {
+  color: var(--sx-comment);
+  font-style: italic;
+}
+
+.sx-string,
+.sx-escape {
+  color: var(--sx-string);
+}
+
+.sx-number,
+.sx-constant {
+  color: var(--sx-number);
+}
+
+.sx-keyword,
+.sx-operator {
+  color: var(--sx-keyword);
+}
+
+.sx-function,
+.sx-tag,
+.sx-heading,
+.sx-label {
+  color: var(--sx-function);
+}
+
+.sx-variable,
+.sx-parameter,
+.sx-property,
+.sx-attribute {
+  color: var(--sx-variable);
+}
+
+.sx-type,
+.sx-namespace {
+  color: var(--sx-type);
+}
+
+.sx-punctuation {
+  color: var(--sx-punctuation);
+}
+
+.sx-invalid {
+  color: var(--sx-keyword);
+  text-decoration: underline wavy;
+}
+
+.sx-strong {
+  font-weight: 700;
+}
+
+.sx-emph {
+  font-style: italic;
+}
+
+.sx-link {
+  text-decoration: underline;
+}
+
+.sx-raw {
+  font-style: normal;
+}
+
+/* A table wider than the column scrolls rather than crushing its cells. The
+   block box caps at the column while its contents keep their natural width,
+   which is what makes the overflow scrollable without a wrapper element the
+   theme has no way to add. */
+table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-block: 1.5rem;
+  font-size: 0.95em;
+}
+
+th,
+td {
+  padding: 0.5rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+}
+
+thead th {
+  border-bottom: 2px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Not found --------------------------------------------------------------- */
+
+.notfound-code {
+  margin: 0;
+  color: var(--rule);
+  font-size: clamp(4rem, 3rem + 8vw, 8rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.notfound .hero-links {
+  margin-top: 2rem;
+}
+
+/* Pager and footer -------------------------------------------------------- */
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+
+.pager .next {
+  margin-left: auto;
+}
+
+.site-footer {
+  max-width: var(--wide);
+  margin-inline: auto;
+  padding: 1.5rem 1.5rem 3rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.footer-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.feeds {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Collapsible ------------------------------------------------------------- */
+
+/* The summary is the opening of the passage and always shows, in link blue
+   behind a triangle. Folded, it stands alone; unfolded, the content runs on
+   after it in the same paragraph. The triangle turns, and the content fades
+   in and out.
+
+   The markup leaves the `<details>` closed, which folds it on a phone. Past
+   the narrow breakpoint `open` reads the other way round, so the passage
+   starts unfolded and a click folds it, with no script to set `open` from the
+   viewport.
+
+   Folded content is taken out with `display: none` rather than the browser's
+   own `content-visibility`, since the unfolded content is `display: contents`
+   and that has no box to make invisible. Unfolding renders the body afresh,
+   which is where `@starting-style` fades it in from; folding holds `display`
+   back with `allow-discrete` until the body has faded out. Only a click fades
+   it: the transitions want the summary focused, which a click does and a page
+   load does not. The motion is dropped with the rest under
+   `prefers-reduced-motion`. */
+/* The pretty-printed HTML breaks the line between `</summary>` and the body,
+   which reads as a space before the body's first character. That whitespace
+   is set at size zero and the body put back at the passage's own size, which
+   the registered property holds as a length worked out at `.collapsible`,
+   where `1em` is still the surrounding text's size. */
+@property --collapsible-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+.collapsible {
+  --collapsible-size: 1em;
+  margin-block: 0 1.15rem;
+}
+
+.collapsible::details-content {
+  font-size: 0;
+}
+
+.collapsible-body {
+  font-size: var(--collapsible-size);
+}
+
+/* Typst sets a multi-paragraph body as `<p>`s, and a block would break the
+   line after the summary. The first paragraph runs on inline; the next one
+   takes back the gap the inline paragraph's margin no longer gives. */
+.collapsible-body>p:first-child {
+  display: inline;
+}
+
+.collapsible-body>p:first-child+* {
+  margin-top: 1.15rem;
+}
+
+.collapsible>summary {
+  display: inline;
+  cursor: pointer;
+  color: var(--link);
+}
+
+.collapsible>summary::before {
+  content: "▸" / "";
+  display: inline-block;
+  margin-right: 0.3em;
+  transition: transform 0.2s ease;
+}
+
+.collapsible::details-content {
+  content-visibility: visible;
+  display: contents;
+}
+
+.collapsible:focus-within::details-content {
+  transition: display 0.3s allow-discrete;
+}
+
+.collapsible:focus-within .collapsible-body {
+  transition: opacity 0.3s ease-out;
+}
+
+/* Folded: on a phone when closed, the markup's state. */
+.collapsible[open]>summary::before {
+  transform: rotate(90deg);
+}
+
+.collapsible:not([open])::details-content {
+  display: none;
+}
+
+.collapsible:not([open]) .collapsible-body {
+  opacity: 0;
+}
+
+/* Folded: past the breakpoint when open, the other way round. */
+@media (width > 40rem) {
+  .collapsible:not([open])>summary::before {
+    transform: rotate(90deg);
+  }
+
+  .collapsible[open]>summary::before {
+    transform: none;
+  }
+
+  .collapsible:not([open])::details-content {
+    display: contents;
+  }
+
+  .collapsible:not([open]) .collapsible-body {
+    opacity: 1;
+  }
+
+  .collapsible[open]::details-content {
+    display: none;
+  }
+
+  .collapsible[open] .collapsible-body {
+    opacity: 0;
+  }
+}
+
+/* Where unfolding fades in from. Last, so it outranks the unfolded opacity
+   above at equal specificity. */
+@starting-style {
+  .collapsible:focus-within .collapsible-body {
+    opacity: 0;
+  }
+}
+
+/* Narrow screens ---------------------------------------------------------- */
+
+@media (max-width: 40rem) {
+  .content {
+    padding-block: 2.25rem 3.5rem;
+  }
+
+  /* A phone is already narrower than the headline's own measure, so the cap
+     only costs it a line. */
+  .hero h1,
+  .hero>.tagline {
+    max-width: none;
+  }
+
+  .work {
+    margin-top: 3rem;
+  }
+
+  .facts {
+    margin-block: 1.5rem;
+  }
+}
+
+/* The landing page's breakpoint: below it, the news drops under the bio.
+   A media query cannot read a custom property, so this is the one place to
+   change it. */
+@media (max-width: 68rem) {
+  .hero:has(.news) {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1rem;
+  }
+
+  /* The bio's own trailing margins would add to the gap: the collapsible's,
+     and its last paragraph's, which runs out through it. */
+  .hero-body> :last-child,
+  .hero-body> :last-child> :last-child> :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Under the bio, the news has its own height again, and the latest piece
+     plus three. */
+  .news {
+    contain: none;
+    margin-bottom: 0;
+  }
+
+  .news-list {
+    flex: none;
+  }
+
+  .news-list li:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+
+  .site-header,
+  .site-footer,
+  .next-project,
+  .pager {
+    display: none;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+}
