@@ -152,11 +152,19 @@
   }
 }
 
+// One line: the name, the day the site was built, the feeds. The build date is
+// the compile's own, so it moves with every deploy without anyone editing it.
 #let site-footer(page) = h("footer", class: "site-footer", {
-  h("div", class: "footer-line", {
-    h("span", if author not in (none, "") { author } else { site-title })
-    feed-links(page)
-  })
+  let today = datetime.today()
+  let parts = (
+    "Copyright © " + if author not in (none, "") { author } else { site-title },
+    {
+      label(page, "last-updated", "last updated") + ": "
+      h("time", datetime: today.display("[year]-[month]-[day]"), today.display("[year]-[month]-[day]"))
+    },
+    feed-links(page),
+  ).filter(x => x != none)
+  h("p", class: "footer-line", parts.join(h("span", class: "footer-sep", aria-hidden: "true", "·")))
 })
 
 // A date in both forms baudelaire hands over: the machine one for `datetime`,
@@ -398,7 +406,10 @@
 //
 // The Scholar pill is `links.scholar` when given, and otherwise a search for the
 // title, for any work that is a paper: one with authors or a paper link.
-#let work-links(entry, resolve, class: "work-links") = {
+//
+// `lead`, when given, is set first, before the pills, such as the date on a
+// project's own page.
+#let work-links(entry, resolve, class: "work-links", lead: none) = {
   let extra = entry.at("extra", default: (:))
   let links = extra.at("links", default: (:))
   let pills = ()
@@ -417,6 +428,7 @@
   let is-paper = extra.at("paper_authors", default: ()).len() > 0 or paper-link != none
   let scholar-url = links.at("scholar", default: if is-paper { scholar-search(entry.label) })
   if scholar-url != none { pills.push(scholar(scholar-url)) }
+  if lead != none { pills.insert(0, lead) }
   if pills.len() > 0 { h("span", class: class, pills.join()) }
 }
 

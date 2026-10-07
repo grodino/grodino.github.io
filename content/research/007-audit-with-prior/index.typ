@@ -5,8 +5,16 @@
   alt: "Interactions between the platform, the auditor and the users",
   description: "How can auditors use prior knowledge to improve the robustness of their audit?",
   paper_authors: (
-    (name: "Jade Garcia Bourrée*", affiliation: "Inria, Université de Rennes"),
-    (name: "Augustin Godinot*", url: "https://grodino.github.io", affiliation: "Université de Rennes, Inria, IRISA/CNRS, PEReN"),
+    (
+      name: "Jade Garcia Bourrée*",
+      url: "https://jadegarciabourree.github.io/",
+      affiliation: "Inria, Université de Rennes",
+    ),
+    (
+      name: "Augustin Godinot*",
+      url: "https://grodino.github.io",
+      affiliation: "Université de Rennes, Inria, IRISA/CNRS, PEReN",
+    ),
     (name: "Martijn de Vos", url: "https://devos50.github.io/", affiliation: "EPFL"),
     (name: "Milos Vujasinovic", url: "https://mvujas.com/", affiliation: "EPFL"),
     (name: "Sayan Biswas", url: "https://blitzwas.github.io/", affiliation: "EPFL"),
@@ -25,16 +33,17 @@
 Do you remember Dieselgate? The car computer would detect when it was on a test-bench and reduce the
 engine power to fake environmental compliance. Well, this can happen with AI regulation too.
 
+#figure(
+  placement: auto,
+  image("game.png", alt: "Interactions between the platform, the auditor and the users", width: 25em),
+  caption: [Interactions between the platform, the auditor and the users],
+)
 An audit is pretty straightforward.
 + I, the auditor 🕵️ come up with questions to ask your model.
 + You, the platform 😈 answer my questions.
 + I look at your answers and decide whether your system abides by the law by computing a series of
   aggregate metrics.
 
-#figure(
-  image("game.png", alt: "Interactions between the platform, the auditor and the users"),
-  caption: [Interactions between the platform, the auditor and the users],
-)
 
 Now, you know the metric, you know the questions, and I don't have access to your model.
 Thus, nothing prevents you from manipulating the answers of your model to pass the audit.
@@ -51,8 +60,16 @@ We instantiate our framework with a simple idea: just look at the accuracy of th
 Our experiments show that this can help reduce the amount of unfairness a platform could hide.
 
 #figure(
-  image("concealable_unfairness.png", alt: "The amount of unfairness a platform can hide as a function of the auditor query budget"),
-  caption: [The amount of unfairness a platform can hide as a function of the auditor query budget],
+  placement: auto,
+  scope: "parent",
+  image(
+    "concealable_unfairness.png",
+    width: 80%,
+    alt: "The amount of unfairness a platform can hide as a function of the auditor query budget",
+  ),
+  caption: [The concealable unfairness for different audit budgets (_i.e._, data samples from the
+    labeled dataset). We highlight this for two features of the CelebA dataset (left) and for two
+    different ML models trained on the ACSEmployment dataset (right).],
 )
 
 If you want to read more about this, I encourage you to read the
@@ -62,4 +79,6 @@ works on robust audits, here are a few I enjoyed:
 - #link("https://arxiv.org/abs/2504.00874")[P2NIA: Privacy-Preserving Non-Iterative Auditing]
 - #link("https://arxiv.org/abs/2502.03773")[ExpProof : Operationalizing Explanations for Confidential Models with ZKPs]
 - #link("https://arxiv.org/abs/2305.13883")[On the relevance of APIs facing fairwashed audits]
-- #link("https://arxiv.org/abs/2410.02777")[OATH: Efficient and Flexible Zero-Knowledge Proofs of End-to-End ML Fairness]
+- #link(
+    "https://arxiv.org/abs/2410.02777",
+  )[OATH: Efficient and Flexible Zero-Knowledge Proofs of End-to-End ML Fairness]

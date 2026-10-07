@@ -33,8 +33,12 @@
         import source: anchor, news
         (news, anchor)
       } else { ((), none) }
-      // Each piece links to its heading on the news page.
-      let href(item) = "/news/#" + anchor(item.title)
+      // Each piece links to its project page when it names one, otherwise to
+      // its heading on the news page.
+      let href(item) = {
+        let project = item.at("project", default: none)
+        if project != none { project } else { "/news/#" + anchor(item.title) }
+      }
       if news.len() > 0 {
         h("aside", class: "news", aria-labelledby: "news-title", {
           h("h2", class: "news-title", id: "news-title", label(page, "news", "News"))

@@ -23,6 +23,9 @@
   --profile-icon-size: 18px;
   /* The space between two news items. */
   --news-item-gap: 0.25rem;
+  /* Project page: the width of the column of the date, facts and links.
+     The title column beside it takes the rest of the row. */
+  --project-side-width: 22rem;
 
   --fg: #000;
   --muted: #626b78;
@@ -50,13 +53,19 @@
   box-sizing: border-box;
 }
 
-/* Below 400px the page stops shrinking and scrolls sideways instead. */
+/* Below 400px the page stops shrinking and scrolls sideways instead. A column
+   at least the window's height, whose main content takes the slack, so the
+   footer sits at the bottom of a short page. */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   min-width: 400px;
   margin: 0;
   font-family: "Crimson Pro", serif;
   font-size: clamp(1rem, 0.97rem + 0.2vw, 1.08rem);
-  line-height: 1.65;
+  line-height: 1.5;
   color: var(--fg);
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
@@ -103,6 +112,7 @@ img {
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem 2rem;
+  width: 100%;
   max-width: var(--wide);
   margin-inline: auto;
   padding: 1.5rem 1.5rem 0;
@@ -135,12 +145,12 @@ img {
    from the sizes the lines are set in, rather than measured: an image's own
    height would otherwise set the row it should follow. */
 .masthead {
-  --brand-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --brand-size: clamp(1.35rem, 1.2rem + 0.8vw, 1.75rem);
   --tagline-size: 1.05rem;
 }
 
 .masthead:has(.avatar) {
-  --brand-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --brand-size: clamp(1.75rem, 1.35rem + 1.75vw, 2.6rem);
   --tagline-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
   display: grid;
   grid-template-columns: auto 1fr;
@@ -300,13 +310,14 @@ img {
 }
 
 .content {
+  flex: 1 0 auto;
+  width: 100%;
   max-width: var(--wide);
   margin-inline: auto;
   padding: 3.5rem 1.5rem 5rem;
 }
 
-.content>.prose,
-.content>.project {
+.content>.prose {
   max-width: var(--measure);
 }
 
@@ -911,38 +922,96 @@ a.chip:hover {
 
 /* Project ----------------------------------------------------------------- */
 
+/* The article runs full width. The article is a container so a floating
+   figure can size itself to the room the measure leaves beside the text.
+   Its write-up takes the article's whole width until there is room for
+   figures in the margin, and reads at the measure from then on (see the
+   `@container` query below). */
 .project {
-  max-width: var(--measure);
+  container-type: inline-size;
 }
 
+/* A figure with `placement: auto, scope: "parent"` breaks out of the measure
+   to the article's full width, below any figure hanging in the margin, its
+   picture centred on the article and only as wide as it needs to be. */
+.figure-wide {
+  clear: right;
+  width: 100cqi;
+}
+
+/* A figure with `placement: auto` hangs right of the text, its top level
+   with the paragraph it follows, over the room between the measure and the
+   article's edge. Two in a row stack rather than overlap. Too narrow a page
+   for that room keeps it in the text, and lets the text run the article's
+   whole width. */
+@container (min-width: 68rem) {
+  .project>.prose {
+    max-width: var(--measure);
+  }
+
+  .figure-aside {
+    --gap: 2.5rem;
+    --room: calc(100cqi - var(--measure) - var(--gap));
+    float: right;
+    clear: right;
+    width: var(--room);
+    margin-right: calc(-1 * (var(--room) + var(--gap)));
+  }
+
+  .figure-aside>figure {
+    margin: 0 0 1.5rem;
+  }
+}
+
+/* The title set at the size of the site's name in the header of a page
+   other than the landing one (`.masthead`'s `--brand-size`). */
 .project-head h1 {
-  font-size: clamp(1.9rem, 1.5rem + 2vw, 2.8rem);
+  font-size: clamp(1.35rem, 1.2rem + 0.8vw, 1.75rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin: 0 0 0.75rem;
   text-wrap: balance;
 }
 
+/* The title, authors and tagline on the left, over the rest of the row;
+   the date, facts and pills on the right, at `--project-side-width`. On a
+   narrow screen the facts go under them. */
+.project-head {
+  display: grid;
+  grid-template-columns: 1fr var(--project-side-width);
+  align-items: start;
+  gap: 1rem 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.project-title {
+  min-width: 0;
+}
+
 .facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-  padding-block: 1rem;
-  border-block: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin: 0;
+  padding-top: 0.5rem;
 }
 
+/* A page with no facts beyond its date leaves no gap for them. */
+.facts:empty {
+  display: none;
+}
+
+/* Each fact on one line: its label, then its value. */
 .fact {
-  display: grid;
-  gap: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.6rem;
 }
 
+/* The label at the value's size, set apart by colour alone. */
 .fact dt {
   color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .fact dd {
@@ -997,21 +1066,115 @@ a.chip:hover {
   color: var(--accent);
 }
 
-/* Links to paper, code... on paper page */
+/* Links to paper, code... on a project page, under its title or in its
+   prose. A touch larger than in a listing's rows. */
 .links-icon {
-  display: inline-block;
-  padding: 5pt 10pt;
-  margin: 10pt;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.2rem 0.75rem;
   background-color: var(--fg);
-  border-radius: 20pt;
+  border-radius: 999px;
   color: var(--bg);
   font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
   font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
 }
 
 .links-icon svg {
-  vertical-align: bottom;
-  height: 20pt;
+  height: 1.15em;
+  width: auto;
+}
+
+.links-icon:hover {
+  background-color: var(--accent);
+}
+
+/* Pills written inline in a page's prose keep apart from their neighbours. */
+.prose .links-icon {
+  margin: 0.15rem 0.2rem;
+  vertical-align: middle;
+}
+
+/* The paper's authors, one line of names under the title, then their
+   institutions, smaller and greyed, each after its footnote number. A name
+   and its numbers, or an institution and its number, never split over two
+   lines. */
+.content .paper-authors,
+.content .paper-affiliations {
+  margin: 0;
+  text-align: left;
+}
+
+.paper-authors span,
+.paper-affiliations span {
+  white-space: nowrap;
+}
+
+.content .paper-affiliations {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.paper-affiliations span {
+  margin-right: 0.75rem;
+}
+
+.paper-authors sup,
+.paper-affiliations sup {
+  margin-left: 0.1em;
+  font-size: 0.7em;
+}
+
+.paper-affiliations sup {
+  margin: 0 0.15em 0 0;
+}
+
+/* The column beside the title, flush right: the facts, then the date and
+   the pills under them. */
+.project-side {
+  display: grid;
+  justify-items: end;
+  gap: 1rem;
+}
+
+.project-date {
+  margin-inline-end: 0.4rem;
+}
+
+/* Too narrow for the title and the column side by side without squeezing
+   the title onto short lines: the column goes under the title, its full
+   width, the date and the pills on one row, the pills at its end. */
+@media (max-width: 56rem) {
+  .project-head {
+    grid-template-columns: 1fr;
+  }
+
+  .project-side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .project-side .facts {
+    padding-top: 0;
+  }
+}
+
+/* The date and the pills flush right, in the column beside the title and
+   on their own row under it alike; a row that wraps keeps them there. */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.4rem;
+  margin-inline-start: auto;
 }
 
 /* Prose ------------------------------------------------------------------- */
@@ -1073,8 +1236,16 @@ blockquote {
   font-size: 1.05rem;
 }
 
+/* A figure's picture and caption centred in the column it is given, in the
+   text or in the margin beside it. */
 figure {
   margin-inline: 0;
+  text-align: center;
+}
+
+/* A picture given a width is set as a block, which `text-align` leaves be. */
+figure>img {
+  margin-inline: auto;
 }
 
 figcaption {
@@ -1244,24 +1415,25 @@ thead th {
 }
 
 .site-footer {
+  width: 100%;
   max-width: var(--wide);
   margin-inline: auto;
-  padding: 1.5rem 1.5rem 3rem;
-  border-top: 1px solid var(--rule);
+  padding: 1.5rem 1.5rem 0.75rem;
   color: var(--muted);
   font-size: 0.88rem;
 }
 
 .footer-line {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  margin: 0;
+  text-align: center;
 }
 
-.feeds {
-  display: flex;
-  gap: 0.75rem;
+.footer-sep {
+  margin-inline: 0.6em;
+}
+
+.feeds a+a {
+  margin-left: 0.75rem;
 }
 
 /* Collapsible ------------------------------------------------------------- */
@@ -1411,8 +1583,8 @@ thead th {
     margin-top: 3rem;
   }
 
-  .facts {
-    margin-block: 1.5rem;
+  .project-head {
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -1481,6 +1653,7 @@ thead th {
     background: #fff;
   }
 }
+
 /* News page ---------------------------------------------------------------
    The pieces run the full width of the page on a timeline: the dates in a
    column on the left, a line beside them with a dot at each piece, and the

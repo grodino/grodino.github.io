@@ -66,7 +66,9 @@ theme "themes/paysage"
 `links` is the row of logos under the name, on the landing page only; `icon`
 is a key of `profile-icons` in `parts.typ` (`scholar`, `github`, `bluesky`,
 `linkedin`) or `email`. `news` names a file that exports a `news` list of
-`(date:, title:, body:)`, newest first: the latest is shown in full beside the
+`(date:, title:, body:, project:)`, newest first (`project`, optional, is the
+path of a page the piece links to from the landing page instead of the news
+page): the latest is shown in full beside the
 bio, the next three one line each, then `All news →`. It is a path rather than
 the list itself because frontmatter goes into the page catalogue, which cannot
 hold content.

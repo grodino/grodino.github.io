@@ -7,8 +7,5 @@
 #import "../parts.typ": shell
 
 #let page(page, body) = shell(page, h("article", class: "prose", {
-  h("h1", page.frontmatter.title)
-  let tagline = page.frontmatter.at("tagline", default: none)
-  if tagline != none { h("p", class: "tagline", tagline) }
   body
 }))
