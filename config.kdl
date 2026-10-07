@@ -21,6 +21,7 @@ paths {
   templates "templates"
 }
 
+
 // Anything you put in `templates/` or `assets/` shadows the theme's file of the
 // same name, one file at a time. Nothing else has to move.
 
