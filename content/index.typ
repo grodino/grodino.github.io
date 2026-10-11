@@ -42,5 +42,4 @@
 // The latest three, newest first. The catalogue is empty on the build's first
 // pass, hence the `calc.min`.
 #let projects = pages("en").filter(p => p.collection == "research")
-#work-grid(none, projects.slice(calc.min(1, projects.len()), calc.min(4, projects.len())))
-
+#work-grid(none, (0, 2, 3, 4).map(i => projects.at(i)))

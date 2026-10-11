@@ -7,8 +7,32 @@
 
 #let news = (
   (
+    date: datetime(year: 2026, month: 10, day: 11),
+    title: "Presenting Oblivious Audits at AIES26.",
+    project: "/research/009-respir/",
+    body: [
+      Mixing canaries, Private Information Retreival to make AI audits more robust against malicious providers.
+      Come see the poster at AIES! #link("/research/009-respir/")[project], #link("https://arxiv.org/abs/2608.04365")[arXiv]
+    ],
+  ),
+  (
+    date: datetime(year: 2026, month: 10, day: 1),
+    title: "Joining MPI-SWS a postdoc!",
+    body: [
+      With #link("https://people.mpi-sws.org/~manuelgr/index.html")[Manuel] and #link("https://people.mpi-sws.org/~manuelgr/group.html")[team], expect some incentive modeling, human/AI/regulator cooperation, and much more.
+    ],
+  ),
+  (
+    date: datetime(year: 2026, month: 2, day: 10),
+    title: "Thinking Out of the (Black)-Box, PhDone.",
+    project: "/research/008-defense/",
+    body: [
+      Many thanks to my advisors, the jury, and everyone who came. #link("/research/008-defense/")[defense page], #link("https://theses.hal.science/tel-05634464v1")[manuscript]
+    ],
+  ),
+  (
     date: datetime(year: 2025, month: 5, day: 1),
-    title: "Our formalization of auditing with a prior has been accepted at ICML25!",
+    title: "Our formalization of auditing with a prior has been accepted as spotlight paper at ICML25!",
     project: "/research/007-audit-with-prior/",
     body: [
       Learn more on the project #link("/research/007-audit-with-prior/")[page] or the #link("https://arxiv.org/abs/2505.04796")[arXiv].
