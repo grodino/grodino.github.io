@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manipulation-Proof Oblivious Audits against Deceptive Model Providers</title>
+    <meta name="description" content="Hide the audit set in a much larger one, and providers can no longer patch only what you audit.">
+    <meta name="author" content="Augustin Godinot">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Manipulation-Proof Oblivious Audits against Deceptive Model Providers">
+    <meta property="og:description" content="Hide the audit set in a much larger one, and providers can no longer patch only what you audit.">
+    <meta property="og:url" content="https://godinot.xyz/research/009-respir/">
+    <meta property="og:site_name" content="Augustin Godinot">
+    <meta property="og:locale" content="en">
+    <meta property="og:image" content="patching.svg">
+    <meta property="og:image:alt" content="A provider patching a known audit set versus a hidden one">
+    <meta property="article:published_time" content="2026-10-01">
+    <meta property="article:author" content="Augustin Godinot">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manipulation-Proof Oblivious Audits against Deceptive Model Providers">
+    <meta name="twitter:description" content="Hide the audit set in a much larger one, and providers can no longer patch only what you audit.">
+    <meta name="twitter:image" content="patching.svg">
+    <link rel="canonical" href="https://godinot.xyz/research/009-respir/">
+    <link rel="alternate" type="application/rss+xml" title="Augustin Godinot" href="https://godinot.xyz/rss.xml">
+    <link rel="stylesheet" href="/assets/math.css">
+  <link rel="stylesheet" href="/assets/style.css"></head>
+  <body>
+    <header class="site-header">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="masthead">
+        <a class="brand" href="/">Augustin Godinot</a>
+        <p class="site-tagline">Postdoctoral researcher, MPI-SWS</p>
+      </div>
+      <nav class="top-nav" aria-label="Primary"><a href="/">home</a><a href="/research/" aria-current="true">research</a><a href="/teaching/">teaching</a><a href="/news/">news</a></nav>
+    </header>
+    <main class="content" id="main">
+      <article class="project">
+        <header class="project-head">
+          <div class="project-title">
+            <h1 id="manipulation-proof-oblivious-audits-against-deceptive-model-providers">Manipulation-Proof Oblivious Audits against Deceptive Model Providers</h1>
+            <p class="paper-authors"><span><a href="https://godinot.xyz/">Augustin Godinot</a><sup>1,2</sup></span>, <span><a href="https://sofianeazogagh.github.io/">Sofiane Azogagh</a><sup>3</sup></span>, <span><a href="https://ferryjul.github.io/">Julien Ferry</a><sup>4</sup></span>, <span><a href="https://sebastiengambs.openum.ca/">Sébastien Gambs</a><sup>5</sup></span></p>
+            <p class="paper-affiliations"><span><sup>1</sup>Inria</span> <span><sup>2</sup>Université de Rennes</span> <span><sup>3</sup>EURECOM</span> <span><sup>4</sup>Polytechnique Montréal</span> <span><sup>5</sup>Université du Québec à Montréal</span></p>
+          </div>
+          <div class="project-side">
+            <dl class="facts"></dl>
+            <span class="project-links"><span class="project-date"><time class="date" datetime="2026-10-01">October 1, 2026</time></span><a href="https://arxiv.org/abs/2608.04365" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"></path><path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>AIES26</a><a href="/assets/research/009-respir/poster.pdf" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><rect x="48" y="80" width="416" height="272" rx="32" ry="32" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"></rect><path d="M256 416v-64M256 80V48M400 464l-32-112M112 464l32-112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>poster</a><a href="https://github.com/sofianeazogagh/oblivious_audit" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M160 368L32 256l128-112M352 368l128-112-128-112M304 96l-96 320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path></svg>code</a><a href="https://scholar.google.com/scholar?q=%22Manipulation-Proof+Oblivious+Audits+against+Deceptive+Model+Providers%22" class="links-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" fill="currentColor"></path></svg>scholar</a></span>
+          </div>
+        </header>
+        <div class="prose">
+          <div class="figure-aside">
+            <figure>
+              <img src="/assets/research/009-respir/patching.svg" alt="A provider patching a known audit set versus a hidden one" width="1209" height="652" style="display: block; width: 100%" loading="lazy" decoding="async">
+              <figcaption>Figure 1: When the provider knows the audit set <math><mi>𝑆</mi></math>, one flip suffices. When <math><mi>𝑆</mi></math> is hidden in <math><mi>𝐶</mi></math>, it must fix all of <math><mi>𝐶</mi></math>, and is twice as likely to hit a canary 🐦.</figcaption>
+            </figure>
+          </div>
+          <p>Under the DSA, regulators can audit the AI systems of large platforms. But the platform knows when it is audited, and on which questions. Showing one model to the regulator and another one to the users is then very easy: to hide unfairness, flipping a handful of answers on the audit set is enough. Hiding a demographic parity gap of 0.01 on 400 balanced queries takes <strong>2 flips</strong>. This is the same manipulation problem as in our <a href="/research/005-manipulated-audits/">SaTML24</a> and <a href="/research/007-audit-with-prior/">ICML25</a> papers, but this time, we tackle the problem with a different approach.</p>
+          <p>Existing defenses either</p>
+          <ul>
+            <li>👀 look at the model differently (research APIs, monitoring, sock puppets), but still trust the provider;</li>
+            <li>📚 bring external information (labeled data, priors, see our <a href="/research/007-audit-with-prior/">ICML25 paper</a>), which is expensive for the auditor;</li>
+            <li>🔒 verify every inference (zero-knowledge proofs, MPC, secure hardware), which is expensive for the provider and does not work for every model.</li>
+          </ul>
+          <div class="figure-aside">
+            <figure>
+              <img src="/assets/research/009-respir/detection.svg" alt="Probability of detecting the manipulation versus the number of canaries" width="756" height="454" style="display: block" loading="lazy" decoding="async">
+              <figcaption>Figure 2: Probability of catching a platform hiding half of its unfairness, for R²esPIR (blue) and a vanilla audit (grey).</figcaption>
+            </figure>
+          </div>
+          <p>In this paper, we mix canaries with lightweight cryptography. The intuition: faking fairness on a few known inputs is easy, faking it on a large set of inputs without getting caught is much harder.</p>
+          <ol>
+            <li>You, the platform 😈, label a large candidate set and commit to your answers.</li>
+            <li>I, the auditor 🕵️, secretly read the answers of a small audit set with <a href="https://en.wikipedia.org/wiki/Private_information_retrieval">Private Information Retrieval</a>: you never learn which ones.</li>
+            <li>Among them are a few canaries 🐦, whose honest answers I got from your public service. If an answer differs, you are caught.</li>
+          </ol>
+          <p>Not knowing what is audited, the platform has to fix the whole candidate set. On our datasets, it must flip about 4× more answers, which roughly doubles its chances of getting caught. And this costs 28 ms per query, without touching the model.</p>
+          <p>Want to know more? Have a look at the <a href="https://arxiv.org/abs/2608.04365">paper</a>, the <a href="/assets/research/009-respir/poster.pdf">poster</a> or the <a href="https://github.com/sofianeazogagh/oblivious_audit">code</a>.</p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-line">Copyright © Augustin Godinot<span class="footer-sep" aria-hidden="true">·</span>last updated: <time datetime="2026-10-11">2026-10-11</time><span class="footer-sep" aria-hidden="true">·</span><span class="feeds"><a href="/rss.xml">RSS</a></span></p>
+    </footer>
+  </body>
+</html>
