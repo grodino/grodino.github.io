@@ -1,27 +1,27 @@
 #let frontmatter = (
   title: "PhD Defense",
+  redirect: ("/defense/",),
   date: datetime(year: 2026, month: 2, day: 10),
   image: "manuscript-cover.png",
   alt: "Manuscript cover",
   description: "Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers",
   links: (
-    manuscript: "manuscript-Augustin_Godinot-DRAFT.pdf",
+    manuscript: "https://theses.hal.science/tel-05634464v1",
     slides: "Defense Slides.pdf",
   ),
 )
 
-= Thinking Out of the (Black)-Box: Tools for machine learning audits in the presence of deceptive model providers
+#figure(
+  placement: auto,
+  image("manuscript-cover.svg", alt: "Manuscript cover")
+)
 
-#image("manuscript-cover.svg", alt: "Manuscript cover")
-
-=== PhD defense
 Tuesday, *February 10th 2026 at 14:30*, I will be defending my thesis in Salle Aurigny at #link("https://www.inria.fr/en/how-reach-inria-centre-rennes-university")[INRIA Centre de l'Université de Rennes].
 
-#link("Augustin Godinot's PhD defense.ics")[Add to calendar (.ics)]
+- #link("Augustin Godinot's PhD defense.ics")[Add to calendar (.ics)]
+- #link("https://theses.hal.science/tel-05634464v1")[Manuscript]
+- #link("Defense Slides.pdf")[Slides]
 
-=== Manuscript/slides
-Reviewed #link("manuscript-Augustin_Godinot-DRAFT.pdf")[draft] before the defense. Final version to come.
-#link("Defense Slides.pdf")[Defense slides].
 
 = Abstract
 Machine learning-based prediction services are now widely deployed across industries by companies, governments, and individuals.
@@ -41,4 +41,4 @@ Finally, in an attempt to cheaply detect post-audit attacks, I introduce a new m
 - M. #link("https://homepages.laas.fr/gtredan/")[Gilles TRÉDAN], _Directeur~de~Recherche~\@~LAAS-CNRS_ — Directeur de thèse
 - M. #link("https://erwanlemerrer.github.io/")[Erwan LE MERRER], _Chercheur~\@~INRIA_ — Directeur de thèse
 - M. #link("https://team.inria.fr/wide/team/francois-taiani/")[François TAÏANI], _Professeur~des~Universités~\@~Université~de~Rennes_ — Directeur de thèse
-- Mme. #link("https://www.peren.gouv.fr/en/recherche-equipe/gohar-dashyan/")[Gohar DASHYAN], _Lead~Recherche~et~Éthique~\@~PEReN_ — Encadrante
+- Mme. #link("https://www.peren.gouv.fr/en/equipe/gohar-dashyan/")[Gohar DASHYAN], _Lead~Recherche~et~Éthique~\@~PEReN_ — Encadrante

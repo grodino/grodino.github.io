@@ -72,6 +72,29 @@ content {
   }
 }
 
+// URLs of the former Zola site. Moved pages name their old path in their own
+// frontmatter (`redirect`); these are the ones no page owns anymore: the
+// projects listing, now `/research/`, and the news items, now one `/news/`
+// page. GitHub Pages reads no `_redirects` file, so each one is an HTML stub.
+redirects {
+  rules {
+    "/projects/" "/research/"
+    "/news/2020-09-creation/" "/news/"
+    "/news/2021-05-submission/" "/news/"
+    "/news/2021-11-cna/" "/news/"
+    "/news/2022-04-nle/" "/news/"
+    "/news/2022-11-hackathon/" "/news/"
+    "/news/2022-11-phd/" "/news/"
+    "/news/2023-01-recodiv/" "/news/"
+    "/news/2023-07-pfia/" "/news/"
+    "/news/2023-12-eplf-talk/" "/news/"
+    "/news/2024-02-satml/" "/news/"
+    "/news/2025-02-aaai25/" "/news/"
+    "/news/2025-03-clevehans/" "/news/"
+    "/news/2025-05-icml25/" "/news/"
+  }
+}
+
 // Baudelaire only writes the content files a page shows (its images), yet
 // `page.assets` already names a URL for every file beside a page, under
 // `/assets/` mirroring `content/`, and the project template points links at
@@ -81,7 +104,13 @@ content {
 // A template cannot reach `<head>`, so the theme writes its stylesheet link at
 // the top of `<body>`. Move it into the head of every page, so the page is not
 // laid out before its styles are known.
+//
+// The former Zola site served those files beside their pages (`/CV/long.pdf`,
+// `/projects/qurd/poster.pdf`, ...). A redirect stub is HTML, which GitHub
+// Pages would serve under the file's extension, so copy the files back to
+// their old paths instead.
 hooks {
   after "cd content && find . -type f ! -name '*.typ' ! -name '*.md' -exec cp -n --parents -t ../public/assets {} +" \
+    "set -- CV CV defense research/008-defense teaching/2023-2026-istic teaching projects/stm32-hal research/001-stm32-hal projects/graphia research/002-graphia projects/recodiv research/003-recodiv projects/manipulated-audits research/005-manipulated-audits projects/qurd research/006-qurd projects/audit-with-prior research/007-audit-with-prior; while [ $# -gt 0 ]; do mkdir -p public/$1 && cp -rn public/assets/$2/. public/$1/; shift 2; done; mkdir -p public/images && cp -n public/assets/portrait.jpg public/images/" \
     "find public -name '*.html' -exec perl -0pi -e 'if (s#\\s*(<link rel=\"stylesheet\" href=\"/assets/style\\.css\">)##) { my $l = $1; s#</head>#$l</head># }' {} +"
 }

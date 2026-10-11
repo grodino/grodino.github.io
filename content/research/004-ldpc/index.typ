@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "LDPC error correcting codes",
+  redirect: ("/projects/ldpc/",),
   date: datetime(year: 2022, month: 2, day: 9),
   image: "cover.png",
   alt: "Bit error rate of Gallager codes against SNR",

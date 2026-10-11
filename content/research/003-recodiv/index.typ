@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "Exposure diversity in music recommender systems",
+  redirect: ("/projects/recodiv/",),
   date: datetime(year: 2021, month: 1, day: 28),
   image: "cover.png",
   alt: "The facets of diversity: variety, balance and disparity",

@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "Robust ML Auditing using Prior Knowledge",
+  redirect: ("/projects/audit-with-prior/",),
   date: datetime(year: 2025, month: 5, day: 1),
   image: "game.png",
   alt: "Interactions between the platform, the auditor and the users",
@@ -12,7 +13,7 @@
     ),
     (
       name: "Augustin Godinot*",
-      url: "https://grodino.github.io",
+      url: "https://godinot.xyz/",
       affiliation: "Université de Rennes, Inria, IRISA/CNRS, PEReN",
     ),
     (name: "Martijn de Vos", url: "https://devos50.github.io/", affiliation: "EPFL"),

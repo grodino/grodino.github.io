@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "Under manipulations, are there AI models harder to audit?",
+  redirect: ("/projects/manipulated-audits/",),
   date: datetime(year: 2023, month: 10, day: 1),
   image: "threat-model.svg",
   alt: "Threat model of the manipulation-proof auditing game",
@@ -7,7 +8,7 @@
   paper_authors: (
     (
       name: "Augustin Godinot",
-      url: "https://grodino.github.io",
+      url: "https://godinot.xyz/",
       affiliation: "Université de Rennes, Inria, IRISA/CNRS, PEReN",
     ),
     (name: "Erwan Le Merrer", url: "https://erwanlemerrer.github.io/", affiliation: "Inria"),

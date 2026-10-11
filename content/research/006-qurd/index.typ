@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "Queries, Representation & Detection: The Next 100 Model Fingerprinting Schemes",
+  redirect: ("/projects/qurd/",),
   date: datetime(year: 2025, month: 2, day: 26),
   image: "qurd_logo.svg",
   alt: "QuRD logo",
@@ -7,7 +8,7 @@
   paper_authors: (
     (
       name: "Augustin Godinot",
-      url: "https://grodino.github.io",
+      url: "https://godinot.xyz/",
       affiliation: "Université de Rennes, Inria, IRISA/CNRS, PEReN",
     ),
     (name: "Erwan Le Merrer", url: "https://erwanlemerrer.github.io/", affiliation: "Inria"),

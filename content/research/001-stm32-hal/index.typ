@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "Real-time artificial horizon",
+  redirect: ("/projects/stm32-hal/",),
   date: datetime(year: 2020, month: 5, day: 2),
   image: "artificial-horizon.jpg",
   alt: "A digital artificial horizon on an STM32F746 board",

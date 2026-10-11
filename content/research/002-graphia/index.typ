@@ -1,5 +1,6 @@
 #let frontmatter = (
   title: "graphia",
+  redirect: ("/projects/graphia/",),
   date: datetime(year: 2020, month: 5, day: 22),
   image: "cover.png",
   alt: "Inter-contact histogram of the Infocom06 dataset",

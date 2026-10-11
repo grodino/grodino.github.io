@@ -1,6 +1,7 @@
 +++
 title = ""
 template = "page.typ"
+redirect = ["/teaching/2023-2026-istic/"]
 +++
 
 - 2023 - 2026, *Convex, Proximal Optimization*, MsC. [lab1](/assets/teaching/TP_optimisation1.pdf), [lab2](/assets/teaching/TP_optimisation2.pdf) I created.
